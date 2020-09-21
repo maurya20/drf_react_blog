@@ -3,3 +3,17 @@ __init__.py
 drf_react_blog/__pycache__/__init__.cpython-38.pyc
 drf_react_blog/__pycache__/settings.cpython-38.pyc
 manage.py
+.vscode/settings.json
+blog/__pycache__/__init__.cpython-38.pyc
+blog/__pycache__/admin.cpython-38.pyc
+blog/__pycache__/models.cpython-38.pyc
+blog/__pycache__/serializers.cpython-38.pyc
+blog/__pycache__/urls.cpython-38.pyc
+blog/__pycache__/views.cpython-38.pyc
+blog/migrations/0001_initial.py
+blog/migrations/0002_auto_20200921_1116.py
+blog/migrations/__pycache__/__init__.cpython-38.pyc
+blog/migrations/__pycache__/0001_initial.cpython-38.pyc
+blog/migrations/__pycache__/0002_auto_20200921_1116.cpython-38.pyc
+drf_react_blog/__pycache__/urls.cpython-38.pyc
+drf_react_blog/__pycache__/wsgi.cpython-38.pyc
