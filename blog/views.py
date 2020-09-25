@@ -26,3 +26,10 @@ class Blogdetail(generics.RetrieveAPIView):
     authentication_classes = []
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+
+
+class Blogcreate(generics.CreateAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
