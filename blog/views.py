@@ -40,3 +40,10 @@ class Blogupdate(generics.UpdateAPIView):
     authentication_classes = []
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+
+
+class Blogdelete(generics.DestroyAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
