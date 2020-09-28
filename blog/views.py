@@ -3,6 +3,9 @@ from .serializers import BlogSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 
@@ -47,3 +50,25 @@ class Blogdelete(generics.DestroyAPIView):
     authentication_classes = []
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+
+
+
+class SignupView(APIView):
+    permission_classes = []
+
+    def post(self, request, format=None):
+        data = self.request.data
+
+        username = data["username"]
+        email = data["email"]
+        password = data["password"]
+        password2 = data["password2"]
+        if password == password2:
+            if User.objects.filter(email=email).exists():
+                return Response({"error":"Email Already Exists!"})
+            else:
+                user = User.objects.create_user(username=username,email=email,password=password)
+                user.save()
+                return Response({"success":"A new user created sucessfully"})
+        else:
+            return Response({"error":"Password do not match"})
