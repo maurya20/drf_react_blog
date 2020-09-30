@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import Blogslist,Blogdetail,Blogcreate,Blogupdate,Blogdelete,SignupView
-
+from .views import current_user, UserList
 
 
 urlpatterns = [
@@ -10,4 +10,9 @@ urlpatterns = [
     path('update/<str:pk>',Blogupdate.as_view()),
     path('delete/<str:pk>',Blogdelete.as_view()),
     path('signup/',SignupView.as_view()),
+    path('current_user/',current_user),
+    path('users/', UserList.as_view()),
 ]
+
+
+
