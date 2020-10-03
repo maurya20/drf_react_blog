@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 const Header = (props) => {
@@ -30,8 +31,12 @@ const Header = (props) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
-            <Nav.Link href="#pricing">About Us</Nav.Link>
+            <Nav.Link> <Link to={"/"}>
+                  Home
+                </Link></Nav.Link>
+            <Nav.Link> <Link to={"/about"}>
+                  About
+                </Link></Nav.Link>
             <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Write Blog</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

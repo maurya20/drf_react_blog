@@ -2,7 +2,7 @@ import React from 'react';
 
 class About extends React.Component {
     render() {
-       console.log(this.props)
+       
        return (
           <div className="container">
              <h1>About Us!</h1>

@@ -3,7 +3,9 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Header from './components/Header'
 import Home from './components/Home'
-// import './App.css';
+import Footer from "./components/Footer"
+import About from './components/About'
+import { BrowserRouter, Route, NavLink} from "react-router-dom";
 
 class App extends Component {
   
@@ -93,19 +95,23 @@ class App extends Component {
     }
     console.log(this.state.logged_in)
     return (
-      <div className="App">
+      <div>
+        <BrowserRouter>
         <Header
           logged_in={this.state.logged_in}
           display_form={this.display_form}
           handle_logout={this.handle_logout}
         {...this.state}/>
         {form}
-        {/* <h3>
-          {this.state.logged_in
-            ? `Hello, ${this.state.username}`
-            : 'Please Log In'}
-        </h3> */}
-        <Home {...this.state} />
+        <Route path="/login" component={form} />
+        <Route path="/signup" component={form} />
+        {/* <Home {...this.state} /> */}
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            
+
+        </BrowserRouter>
+        <Footer/>
       </div>
       
     );
