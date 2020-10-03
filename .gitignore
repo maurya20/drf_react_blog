@@ -17,3 +17,5 @@ blog/migrations/__pycache__/0001_initial.cpython-38.pyc
 blog/migrations/__pycache__/0002_auto_20200921_1116.cpython-38.pyc
 drf_react_blog/__pycache__/urls.cpython-38.pyc
 drf_react_blog/__pycache__/wsgi.cpython-38.pyc
+
+node_modules/
