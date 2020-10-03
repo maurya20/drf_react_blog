@@ -102,10 +102,9 @@ class App extends Component {
           display_form={this.display_form}
           handle_logout={this.handle_logout}
         {...this.state}/>
-        {form}
-        <Route path="/login" component={form} />
-        <Route path="/signup" component={form} />
-        {/* <Home {...this.state} /> */}
+        {/* {form} */}
+        <Route path="/login"><LoginForm handle_login={this.handle_login} /></Route>
+        <Route path="/signup"><SignupForm handle_signup={this.handle_signup} /></Route>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             

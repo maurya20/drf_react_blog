@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
     const logged_out_nav = (
-        <Nav>
-        <Nav.Link href="#deets" onClick={() => props.display_form('login')}>SignIn</Nav.Link>
-        <Nav.Link eventKey={2} href="#memes" onClick={() => props.display_form('signup')}>
-          SignUP
-        </Nav.Link>
+      <Nav style={{color:"#00ff00"}}>
+          <Nav.Link><Link to={"/login"}>LogIn</Link></Nav.Link>
+          <Nav.Link><Link to={"/signup"}>SignUP</Link></Nav.Link>
+        {/* <Nav.Link onClick={() => props.display_form('login')}>Login</Nav.Link>
+        <Nav.Link eventKey={2} onClick={() => props.display_form('signup')}>SignUP</Nav.Link> */}
         </Nav>
       );
     
@@ -26,7 +26,7 @@ const Header = (props) => {
     return (
         <div>
         
-        <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
         <Navbar.Brand href="#home"><h1>Blog Website</h1></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -51,10 +51,6 @@ const Header = (props) => {
           </Nav>
           <Nav>
           <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>
-            {/* <Nav.Link href="#deets">SignIn</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              SignUP
-            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
