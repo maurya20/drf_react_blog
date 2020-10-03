@@ -10,12 +10,14 @@ from django.contrib.auth.models import User
 from rest_framework import permissions, status
 from rest_framework.decorators import api_view
 from .serializers import UserSerializer, UserSerializerWithToken
-
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.generics import ListAPIView
 
 
 class Blogslist(APIView):
-    permission_classes = []
-    authentication_classes = []
+    permission_classes = (IsAuthenticated)
+    authentication_classes = ()
     
     def get(self, request, format=None):
         qs = Blog.objects.all()
@@ -26,6 +28,13 @@ class Blogslist(APIView):
         qs = Blog.objects.all()
         serializer = BlogSerializer(qs, many=True)
         return Response(serializer.data)
+
+
+class Bloglist(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JSONWebTokenAuthentication]
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
 
 
 class Blogdetail(generics.RetrieveAPIView):
@@ -108,3 +117,12 @@ class UserList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+@api_view(['GET'])
+def bloglisting(request):
+    data = Blog.objects.all()
+    serializer = BlogSerializer(data=request.data, many=True)
+    return Response(serializer.data)
