@@ -44,6 +44,8 @@ this.state = {
         console.log(localStorage.getItem('token'))
       return (
           <div className="container">
+            
+            <br/>
         <div className="row">
           {this.state.data.map((contact) => {
             return (
