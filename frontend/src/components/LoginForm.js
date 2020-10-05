@@ -1,10 +1,10 @@
 import React from "react";
-// import PropTypes from 'prop-types';
+
 
 class LoginForm extends React.Component {
   state = {
     username: "",
-    password: "",
+    password: ""
   };
 
   handle_change = (e) => {
@@ -20,7 +20,9 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>Login</h3>
+        <br/>
+        <br/>
+        <h3>Login Here!!</h3>
         <form
           className="form-inline"
           onSubmit={(e) => this.props.handle_login(e, this.state)}
@@ -46,6 +48,8 @@ class LoginForm extends React.Component {
             Submit
           </button>
         </form>
+        <br/>
+        <br/>
       </div>
     );
   }

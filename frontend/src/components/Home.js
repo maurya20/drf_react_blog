@@ -49,7 +49,7 @@ this.state = {
             return (
               <div className="col-md-4" key={contact.id}>
                 <div className="thumbnail">
-                  <img src={contact.pic} alt="Nature" style={{width:"100%"}}></img>
+                  <img src="https://picsum.photos/200" alt="Nature" style={{width:"100%"}}></img>
                   <div className="caption">
                     <p style={{color:"black"}}>{contact.title}</p>
                     <p>Category: {contact.category} </p>
