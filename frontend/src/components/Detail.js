@@ -42,8 +42,14 @@ export class Detail extends Component {
     
     
     return (
-      <div>
-        <h1>{this.state.data.title}</h1>
+      <div className="container">
+        <h3 className="blog-heading">{this.state.data.title}</h3>
+    <p>Published on: {this.state.data.created_on}</p>
+    <div className="blog-image">
+          <img src='https://source.unsplash.com/random'alt="Some Blog Pic" width="100%" height="500" />
+        </div>
+        <br/>
+    <p>{this.state.data.content}</p>
       </div>
     );
   }
