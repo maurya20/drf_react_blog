@@ -44,7 +44,7 @@ this.state = {
   
   
     render() {
-        console.log(localStorage.getItem('token'))
+        
       return (
           <div className="container">
             <ul className="category-nav">
@@ -69,8 +69,10 @@ this.state = {
                 </div>
                 <Card.Footer>
             <div className="caption">
-                    <h6 style={{color:"blue"}}><Link to={'/about'}>{blog.title}</Link></h6>
+            
+                    <h6 style={{color:"blue"}}><Link to={`/detail/id=${blog.id}`}>{blog.title}</Link></h6>
                     <h6>Category: <Link to={'/about'}>{blog.category}</Link> </h6>
+                   
                   </div>
             </Card.Footer>
               </div>

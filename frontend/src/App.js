@@ -5,7 +5,9 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import Detail from "./components/Detail"
+import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
+// import Switch from "react-bootstrap/esm/Switch";
 
 class App extends Component {
   state = {
@@ -56,7 +58,6 @@ class App extends Component {
 
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          {/* <Route path="/login"><LoginForm handle_login={this.handle_login} /></Route> */}
           <Route path="/signup">
             <SignupForm handle_signup={this.handle_signup} />
           </Route>
@@ -71,6 +72,10 @@ class App extends Component {
               )
             }
           />
+          <Switch>
+          <Route path="/detail" component={Detail} />
+          </Switch>
+          
         </BrowserRouter>
         <Footer />
       </div>

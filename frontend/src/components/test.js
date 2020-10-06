@@ -65,3 +65,60 @@
 
 
   //displayed_form: "",
+
+
+  import React from 'react';
+
+
+
+
+
+// class Detail extends React.Component {
+// //   constructor(props){
+// //     super(props)
+// // this.state = {
+// //         data: [],
+// //         loaded: false,
+// //         placeholder: "Loading",
+// //       };
+    
+// //     }
+// //     componentDidMount() {
+       
+// //       fetch(`http://127.0.0.1:8000/detail/`, {
+// //         headers: {
+// //           'Content-Type': 'application/json',
+// //           Authorization: `JWT ${localStorage.getItem('token')}`
+// //         }
+// //       }
+// //       )
+// //         .then((response) => {
+// //           if (response.status > 400) {
+// //             return this.setState(() => {
+// //               return { placeholder: "Something went wrong!" };
+// //             });
+// //           }
+// //           return response.json();
+// //         })
+// //         .then((data) => {
+// //           this.setState(() => {
+// //             return {
+// //               data,
+// //               loaded: true,
+// //             };
+// //           });
+// //         });
+// //     }
+  
+  
+//     render() {
+        
+//       return (
+//           <div className="container">
+//        {/* <h3>{this.state.data.title}</h3> */}
+//        <h1 style={{color:"red"}}>Detail page </h1>
+//         </div>
+//       );
+//     }
+//   }
+//  export default Detail;

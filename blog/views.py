@@ -38,8 +38,8 @@ class Bloglist(generics.ListAPIView):
 
 
 class Blogdetail(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [JSONWebTokenAuthentication]
+    permission_classes = []
+    authentication_classes = []
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
 
