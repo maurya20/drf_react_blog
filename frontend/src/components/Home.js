@@ -1,5 +1,6 @@
 import React from 'react';
-// import './Home.css'
+import {Link} from 'react-router-dom'
+
 
 
 class Home extends React.Component {
@@ -44,17 +45,27 @@ this.state = {
         console.log(localStorage.getItem('token'))
       return (
           <div className="container">
-            
+            <ul className="category-nav">
+  <li><a href="#home">Agriculture</a></li>
+  <li><a href="#contact">Education</a></li>
+  <li><a href="#about">Science</a></li>
+  <li><a href="#contact">Economics</a></li>
+  <li><a href="#contact">Gadgets</a></li>
+  <li><a href="#contact">Travel</a></li>
+  <li><a href="#contact">Tech</a></li>
+  <li><a href="#clients">Books&Literature</a></li>  
+  <li><a href="#contact">Politics</a></li>
+</ul>
             <br/>
         <div className="row">
-          {this.state.data.map((contact) => {
+          {this.state.data.map((blog) => {
             return (
-              <div className="col-md-4" key={contact.id}>
+              <div className="col-md-4" key={blog.id}>
                 <div className="thumbnail">
                   <img src="https://picsum.photos/200" alt="Nature" style={{width:"100%"}}></img>
                   <div className="caption">
-                    <p style={{color:"black"}}>{contact.title}</p>
-                    <p>Category: {contact.category} </p>
+                    <h6 style={{color:"blue"}}><Link to={'/about'}>{blog.title}</Link></h6>
+                    <h6>Category: <Link to={'/about'}>{blog.category}</Link> </h6>
                   </div>
                 </div>
               </div>
