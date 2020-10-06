@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    # author = User.objects.all()
+    author = User.objects.all()
     class Meta:
         model = Blog
         #fields = ['id', 'title', 'category', 'author', 'content', 'created_on']
