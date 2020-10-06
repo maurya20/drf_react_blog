@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import Card from 'react-bootstrap/Card'
+
 
 
 
@@ -63,12 +65,16 @@ this.state = {
               <div className="col-md-4" key={blog.id}>
                 <div className="thumbnail">
                   <img src="https://picsum.photos/200" alt="Nature" style={{width:"100%"}}></img>
-                  <div className="caption">
+                  
+                </div>
+                <Card.Footer>
+            <div className="caption">
                     <h6 style={{color:"blue"}}><Link to={'/about'}>{blog.title}</Link></h6>
                     <h6>Category: <Link to={'/about'}>{blog.category}</Link> </h6>
                   </div>
-                </div>
+            </Card.Footer>
               </div>
+              
             );
           })}
         </div>
