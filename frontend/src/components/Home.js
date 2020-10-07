@@ -70,7 +70,7 @@ this.state = {
                 <Card.Footer>
             <div className="caption">
             
-                    <h6 style={{color:"blue"}}><Link to={`/detail/id=${blog.id}`}>{blog.title}</Link></h6>
+                    <h6 style={{color:"blue"}}><Link to={`/detail/?id=${blog.id}&user=${blog.author}`}>{blog.title}</Link></h6>
                     <h6>Category: <Link to={'/about'}>{blog.category}</Link> </h6>
                    
                   </div>
