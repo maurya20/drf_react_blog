@@ -42,6 +42,7 @@ class Author extends Component {
     return (
       <div>
         <h6>Author: {this.state.user.username}</h6>
+    <p>Email: {this.state.user.email}</p>
       </div>
     );
   }

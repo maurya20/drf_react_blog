@@ -1,124 +1,48 @@
- // let form;
-    // switch (this.state.displayed_form) {
-    //   case 'login':
-    //     form = <LoginForm handle_login={this.handle_login} />;
-    //     break;
-    //   case 'signup':
-    //     form = <SignupForm handle_signup={this.handle_signup} />;
-    //     break;
-    //   default:
-    //     form = null;
-    // }
+import React from 'react';
+import PropTypes from 'prop-types';
 
+class SignupForm extends React.Component {
+  state = {
+    username: '',
+    password: ''
+  };
 
+  handle_change = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState(prevstate => {
+      const newState = { ...prevstate };
+      newState[name] = value;
+      return newState;
+    });
+  };
 
+  render() {
+    return (
+      <form onSubmit={e => this.props.handle_signup(e, this.state)}>
+        <h4>Sign Up</h4>
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          value={this.state.username}
+          onChange={this.handle_change}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          value={this.state.password}
+          onChange={this.handle_change}
+        />
+        <input type="submit" />
+      </form>
+    );
+  }
+}
 
+export default SignupForm;
 
-     // display_form = form => {
-  //   this.setState({
-  //     displayed_form: form
-  //   });
-  // };
-
-
-
-
-
-  
-  // handle_signup = (e, data) => {
-  //   e.preventDefault();
-  //   fetch('http://localhost:8000/users/', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //     .then(res => res.json())
-  //     .then(json => {
-  //       localStorage.setItem('token', json.token);
-  //       this.setState({
-  //         logged_in: true,
-  //         displayed_form: '',
-  //         username: json.username
-  //       });
-  //     });
-  // };
-
-
-     
-  // componentDidMount() {
-  //   if (this.state.logged_in) {
-  //     fetch('http://localhost:8000/current_user/', {
-  //       headers: {
-  //         Authorization: `JWT ${localStorage.getItem('token')}`
-  //       }
-  //     })
-  //       .then(res => res.json())
-  //       .then(json => {
-  //         this.setState({ username: json.username });
-  //       });
-  //   }
-  // }
-  
-
-
-
-  //displayed_form: "",
-
-
-  import React from 'react';
-
-
-
-
-
-// class Detail extends React.Component {
-// //   constructor(props){
-// //     super(props)
-// // this.state = {
-// //         data: [],
-// //         loaded: false,
-// //         placeholder: "Loading",
-// //       };
-    
-// //     }
-// //     componentDidMount() {
-       
-// //       fetch(`http://127.0.0.1:8000/detail/`, {
-// //         headers: {
-// //           'Content-Type': 'application/json',
-// //           Authorization: `JWT ${localStorage.getItem('token')}`
-// //         }
-// //       }
-// //       )
-// //         .then((response) => {
-// //           if (response.status > 400) {
-// //             return this.setState(() => {
-// //               return { placeholder: "Something went wrong!" };
-// //             });
-// //           }
-// //           return response.json();
-// //         })
-// //         .then((data) => {
-// //           this.setState(() => {
-// //             return {
-// //               data,
-// //               loaded: true,
-// //             };
-// //           });
-// //         });
-// //     }
-  
-  
-//     render() {
-        
-//       return (
-//           <div className="container">
-//        {/* <h3>{this.state.data.title}</h3> */}
-//        <h1 style={{color:"red"}}>Detail page </h1>
-//         </div>
-//       );
-//     }
-//   }
-//  export default Detail;
+SignupForm.propTypes = {
+  handle_signup: PropTypes.func.isRequired
+};

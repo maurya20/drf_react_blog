@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import '../App.css'
-import Author from './Author'
+import "../App.css";
+import Author from "./Author";
 
 export class Detail extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       data: [],
       loaded: false,
       placeholder: "Loading",
-  
     };
   }
 
-  
   componentDidMount() {
-    let params = new URL((window.location).href).searchParams
-    let id = params.get('id')
-    console.log(id)
+    let params = new URL(window.location.href).searchParams;
+    let id = params.get("id");
+    console.log(id);
     fetch(`http://127.0.0.1:8000/detail/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -41,22 +39,34 @@ export class Detail extends Component {
         });
       });
   }
- 
+
   render() {
-    
-    
     return (
-      <div className="container">
-        <div className="blog-heading">
-        <h5>{this.state.data.title} </h5><h6 style={{color:'red'}}>Category:{this.state.data.category}</h6>
+      <div className="container-fluid">
+        <div className="row" >
+          <div className="col bg-info">
+            <h6 style={{ color: "white" }}>
+              Category: {this.state.data.category}
+            </h6>
+          </div>
+          <div className="col-6 bg-warning">
+            <h5>{this.state.data.title} </h5>
+            <p>Published on: {this.state.data.created_on}</p>
+          </div>
+          <div className="col bg-info" style={{color:"white"}}>
+            <Author />
+          </div>
         </div>
-    <p>Published on: {this.state.data.created_on}</p>
-    <Author/>
-    <div className="blog-image">
-          <img src='https://source.unsplash.com/random'alt="Some Blog Pic" width="100%" height="500" />
+        <div className="blog-image">
+          <img
+            src="https://source.unsplash.com/random"
+            alt="Some Blog Pic"
+            width="100%"
+            height="500"
+          />
         </div>
-        <br/>
-    <p>{this.state.data.content}</p>
+        <br />
+        <p>{this.state.data.content}</p>
       </div>
     );
   }
