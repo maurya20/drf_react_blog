@@ -38,7 +38,11 @@ class SignupForm extends Component {
       email:this.state.email,
       password:this.state.password,
       password2:this.state.password2}
-      
+      if (this.state.password!== this.state.password2) {
+        alert("Passwords don't match")
+        window.location.href = "http://localhost:3000/signup/"
+      }
+      else
     fetch('http://127.0.0.1:8000/signup/',{
         method: "POST",
         body: JSON.stringify(userdata),
@@ -47,7 +51,7 @@ class SignupForm extends Component {
           'Content-Type': 'application/json'
         },
       }).then(response => {
-        if(!response.ok) throw new Error(response.status);
+        if(response.error) throw new Error(response.status);
         else 
         response.json().then(data =>{
           alert("You are registered sucessfully")
