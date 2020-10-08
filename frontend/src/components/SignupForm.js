@@ -6,38 +6,59 @@ class SignupForm extends Component {
     this.state = {
       username: '',
       email: '',
-      password:''
+      password:'',
+      password2:''
     }
   }
-  mySubmitHandler = (event) => {
-    event.preventDefault();
-    let username = this.state.username
-    
+  usernameChange = (event)=>{
+    this.setState({
+      username:event.target.value
+    })
+  }
+  emailChange = (event)=>{
+    this.setState({
+      email:event.target.value
+    })
+  }
+  passwordChange = (event)=>{
+    this.setState({
+      password:event.target.value
+    })
+  }
+  password2Change = (event)=>{
+    this.setState({
+      password2:event.target.value
+    })
   }
   
   render() {
+    console.log(this.state)
     return (
       <div>
       <div className="row">
     <div className="col bg-white"></div>
     <div className="col-6 bg-secondary">
       <h3>Register Here</h3>
-    <form>
+    <form >
     <div className="form-group">
       <label for="text">Username:</label>
-      <input type="text" className="form-control" placeholder="Enter email" name="username"/>
+      <input type="text" className="form-control" placeholder="Enter Username" onChange={this.usernameChange} value={this.state.username}/>
     </div>
     <div className="form-group">
-      <label for="email">Email:</label>
-      <input type="email" className="form-control" id="email" placeholder="Enter email" name="email"/>
+      <label >Email:</label>
+      <input type="email" className="form-control"  placeholder="Enter email" onChange={this.emailChange} value={this.state.email}/>
     </div>
     <div className="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="pswd"/>
+      <label >Password:</label>
+      <input type="password" className="form-control"  placeholder="Enter password" onChange={this.passwordChange} value={this.state.password} />
+    </div>
+    <div className="form-group">
+      <label >Confirm Password:</label>
+      <input type="password" className="form-control"  placeholder="Confirm password"onChange={this.password2Change} value={this.state.password2} />
     </div>
     <div className="form-group form-check">
       <label className="form-check-label">
-        <input className="form-check-input" type="checkbox" name="remember"/> Remember me
+        <input className="form-check-input" type="checkbox"/> Remember me
       </label>
     </div>
     <button type="submit" className="btn btn-primary">Submit</button>
