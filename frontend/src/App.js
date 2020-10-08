@@ -59,7 +59,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/signup">
-            <SignupForm handle_signup={this.handle_signup} />
+            <SignupForm />
           </Route>
 
           <Route
@@ -72,6 +72,7 @@ class App extends Component {
               )
             }
           />
+          
           <Switch>
           <Route path="/detail" component={Detail} />
           </Switch>

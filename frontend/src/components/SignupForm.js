@@ -47,9 +47,11 @@ class SignupForm extends Component {
           'Content-Type': 'application/json'
         },
       }).then(response => {
+        if(!response.ok) throw new Error(response.status);
+        else 
         response.json().then(data =>{
-          console.log("Successful" + data);
           alert("You are registered sucessfully")
+          window.location.href = "http://localhost:3000/login"
         })
     })
   } 
