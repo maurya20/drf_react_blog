@@ -30,16 +30,39 @@ class SignupForm extends Component {
       password2:event.target.value
     })
   }
+
+
+  handleFormSubmit=(event)=>{
+    event.preventDefault();
+    let userdata = {username:this.state.username,
+      email:this.state.email,
+      password:this.state.password,
+      password2:this.state.password2}
+      
+    fetch('http://127.0.0.1:8000/signup/',{
+        method: "POST",
+        body: JSON.stringify(userdata),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      }).then(response => {
+        response.json().then(data =>{
+          console.log("Successful" + data);
+          alert("You are registered sucessfully")
+        })
+    })
+  } 
   
   render() {
-    console.log(this.state)
+    
     return (
       <div>
       <div className="row">
     <div className="col bg-white"></div>
     <div className="col-6 bg-secondary">
       <h3>Register Here</h3>
-    <form >
+    <form onSubmit={this.handleFormSubmit}>
     <div className="form-group">
       <label for="text">Username:</label>
       <input type="text" className="form-control" placeholder="Enter Username" onChange={this.usernameChange} value={this.state.username}/>
