@@ -51,10 +51,10 @@ class SignupForm extends Component {
           'Content-Type': 'application/json'
         },
       }).then(response => {
-        if(response.error) throw new Error(response.status);
+        if(!response.ok) throw new Error(response.status);
         else 
         response.json().then(data =>{
-          alert("You are registered sucessfully")
+          alert(JSON.stringify(data))
           window.location.href = "http://localhost:3000/login"
         })
     })
@@ -70,7 +70,7 @@ class SignupForm extends Component {
       <h3>Register Here</h3>
     <form onSubmit={this.handleFormSubmit}>
     <div className="form-group">
-      <label for="text">Username:</label>
+      <label >Username:</label>
       <input type="text" className="form-control" placeholder="Enter Username" onChange={this.usernameChange} value={this.state.username}/>
     </div>
     <div className="form-group">

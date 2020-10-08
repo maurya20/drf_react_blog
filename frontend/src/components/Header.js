@@ -21,7 +21,7 @@ const Header = (props) => {
       <h3> {props.logged_in ? `Hello, ${props.username}` : "Please Log In"}</h3>
 
       <h3 style={{ color: "#990", paddingLeft: 15 }} onClick={props.handle_logout}>
-        <Link>Logout</Link>
+        Logout
       </h3>
     </Nav>
   );
