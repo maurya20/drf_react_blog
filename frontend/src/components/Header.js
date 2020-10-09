@@ -44,7 +44,7 @@ const Header = (props) => {
             </Nav.Link>
             <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
               <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/myblog">My Blogs</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link to="/myblogs">My Blogs</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to="/myprofile">My Profile</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to="/editprofile">Edit Profile</Link></NavDropdown.Item>
             </NavDropdown>

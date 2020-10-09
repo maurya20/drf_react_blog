@@ -8,6 +8,7 @@ import About from "./components/About";
 import Detail from "./components/Detail";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Writeblog from "./components/Writeblog";
+import Myblogs from "./components/Myblogs";
 
 class App extends Component {
   state = {
@@ -64,7 +65,6 @@ class App extends Component {
         <BrowserRouter>
           <Header
             logged_in={this.state.logged_in}
-            display_form={this.display_form}
             handle_logout={this.handle_logout}
             {...this.state}
           />
@@ -76,7 +76,9 @@ class App extends Component {
           <Route path="/signup">
             <SignupForm />
           </Route>
-
+          <Route path="/writeblog">
+            <Writeblog {...this.state} />
+          </Route>
           <Route
             path="/login"
             render={() =>
@@ -91,9 +93,7 @@ class App extends Component {
           <Switch>
             <Route path="/detail" component={Detail} />
           </Switch>
-          <Route path="/writeblog">
-            <Writeblog {...this.state} />
-          </Route>
+          <Route path="/myblogs"><Myblogs /></Route>
         </BrowserRouter>
         <Footer />
       </div>
