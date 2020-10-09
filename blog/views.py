@@ -14,11 +14,11 @@ from rest_framework.generics import ListAPIView
 
 
 class Blogslist(APIView):
-    permission_classes = (IsAuthenticated)
+    permission_classes = ()
     authentication_classes = ()
     
     def get(self, request, format=None):
-        qs = Blog.objects.all()
+        qs = Blog.objects.all(id=id)
         serializer = BlogSerializer(qs, many=True)
         return Response(serializer.data)
 
@@ -107,26 +107,31 @@ def current_user(request):
     return Response(serializer.data)
 
 
-class UserList(APIView):
-    """
-    Create a new user. It's called 'UserList' because normally we'd have a get
-    method here too, for retrieving a list of all User objects.
-    """
-
-    permission_classes = (permissions.AllowAny,)
-
-    def post(self, request, format=None):
-        serializer = UserSerializerWithToken(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
+class MyBlogs(generics.ListAPIView):
+    serializer_class = BlogSerializer
 
-@api_view(['GET'])
-def bloglisting(request):
-    data = Blog.objects.all()
-    serializer = BlogSerializer(data=request.data, many=True)
-    return Response(serializer.data)
+    def get_queryset(self):
+        return Blog.objects.filter(author_id=self.kwargs['author_id'])
+
+
+# class UserList(APIView):
+#     """
+#     Create a new user. It's called 'UserList' because normally we'd have a get
+#     method here too, for retrieving a list of all User objects.
+#     """
+
+#     permission_classes = (permissions.AllowAny,)
+
+#     def post(self, request, format=None):
+#         serializer = UserSerializerWithToken(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+

@@ -93,7 +93,7 @@ class App extends Component {
           <Switch>
             <Route path="/detail" component={Detail} />
           </Switch>
-          <Route path="/myblogs"><Myblogs /></Route>
+          <Route path="/myblogs"><Myblogs {...this.state} /></Route>
         </BrowserRouter>
         <Footer />
       </div>
