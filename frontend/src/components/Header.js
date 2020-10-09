@@ -17,12 +17,12 @@ const Header = (props) => {
   );
 
   const logged_in_nav = (
-    <Nav style={{ color: "#00ff00" }}>
+    <Nav className="logout">
       <h3> {props.logged_in ? `Hello, ${props.username}` : "Please Log In"}</h3>
 
-      <h3 className="logout" onClick={props.handle_logout}>
-        Logout
-      </h3>
+      <Link onClick={props.handle_logout}>
+        <h4 style={{paddingLeft:20}}>Logout</h4>
+      </Link>
     </Nav>
   );
   return (

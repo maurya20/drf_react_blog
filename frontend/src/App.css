@@ -10,12 +10,9 @@
 
 /* For Logout button */
 .logout{
-color: yellow;
-padding-left: 15;
+color: rgb(187, 255, 0);
 }
-.logout:hover{
-   color: blue;
-}
+
 /* for  Blog Detail page */
 
 
