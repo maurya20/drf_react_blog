@@ -15,7 +15,7 @@ export class Detail extends Component {
   componentDidMount() {
     let params = new URL(window.location.href).searchParams;
     let id = params.get("id");
-    console.log(id);
+   
     fetch(`http://127.0.0.1:8000/detail/${id}`, {
       headers: {
         "Content-Type": "application/json",
