@@ -20,7 +20,7 @@ const Header = (props) => {
     <Nav style={{ color: "#00ff00" }}>
       <h3> {props.logged_in ? `Hello, ${props.username}` : "Please Log In"}</h3>
 
-      <h3 style={{ color: "#990", paddingLeft: 15 }} onClick={props.handle_logout}>
+      <h3 className="logout" onClick={props.handle_logout}>
         Logout
       </h3>
     </Nav>

@@ -7,6 +7,15 @@
    background-color: rgb(29, 97, 71);
 }
 
+
+/* For Logout button */
+.logout{
+color: yellow;
+padding-left: 15;
+}
+.logout:hover{
+   color: blue;
+}
 /* for  Blog Detail page */
 
 
