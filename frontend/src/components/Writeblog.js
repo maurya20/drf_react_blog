@@ -33,6 +33,9 @@ class Writeblog extends Component {
       handleFormSubmit=(event)=>{
           if(this.props.logged_in !==true){
               alert("You are not Logged-In")
+              // window.location.href = "http://localhost:3000/login"
+              // const { history } = this.props.history;
+              // history.push("/login")
           }
           else{
         event.preventDefault();

@@ -111,6 +111,8 @@ def current_user(request):
 
 
 class MyBlogs(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JSONWebTokenAuthentication]
     serializer_class = BlogSerializer
 
     def get_queryset(self):

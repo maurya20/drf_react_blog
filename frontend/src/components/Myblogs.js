@@ -13,6 +13,11 @@ class Myblogs extends Component {
         
         }
         componentDidMount() {
+            if(this.props.logged_in !==true){
+                alert("You are not Logged-In")
+                window.location.href = "http://localhost:3000/login"
+            }
+            else{
           let author_id=this.props.user_id
           fetch(`http://127.0.0.1:8000/myblogs/${author_id}`, {
             headers: {
@@ -38,23 +43,15 @@ class Myblogs extends Component {
               });
             });
         }
+        }
       
       
         render() {
             
           return (
               <div className="container">
-                <ul className="category-nav">
-      <li><a href="#home">Agriculture</a></li>
-      <li><a href="#contact">Education</a></li>
-      <li><a href="#about">Science&Tech</a></li>
-      <li><a href="#contact">Economics</a></li>
-      <li><a href="#contact">Gadgets</a></li>
-      <li><a href="#contact">Travel</a></li>
-      <li><a href="#clients">Books&Literature</a></li>  
-      <li><a href="#contact">Other</a></li>
-    </ul>
                 <br/>
+          <h3>Blogs By {this.props.username}</h3>
             <div className="row">
               {this.state.data.map((blog) => {
                 return (
