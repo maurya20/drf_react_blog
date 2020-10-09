@@ -7,7 +7,8 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Detail from "./components/Detail"
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
-// import Switch from "react-bootstrap/esm/Switch";
+import Writeblog from "./components/Writeblog";
+
 
 class App extends Component {
   state = {
@@ -76,6 +77,7 @@ class App extends Component {
           <Switch>
           <Route path="/detail" component={Detail} />
           </Switch>
+          <Route path="/writeblog" component={Writeblog}></Route>
           
         </BrowserRouter>
         <Footer />

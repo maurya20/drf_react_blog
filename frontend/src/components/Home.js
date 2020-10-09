@@ -50,13 +50,12 @@ this.state = {
             <ul className="category-nav">
   <li><a href="#home">Agriculture</a></li>
   <li><a href="#contact">Education</a></li>
-  <li><a href="#about">Science</a></li>
+  <li><a href="#about">Science&Tech</a></li>
   <li><a href="#contact">Economics</a></li>
   <li><a href="#contact">Gadgets</a></li>
   <li><a href="#contact">Travel</a></li>
-  <li><a href="#contact">Tech</a></li>
   <li><a href="#clients">Books&Literature</a></li>  
-  <li><a href="#contact">Politics</a></li>
+  <li><a href="#contact">Other</a></li>
 </ul>
             <br/>
         <div className="row">
