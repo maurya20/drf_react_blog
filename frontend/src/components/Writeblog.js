@@ -39,6 +39,7 @@ class Writeblog extends Component {
           category:this.state.category,
           content:this.state.content,
           author:this.props.user_id}
+  
           
         fetch('http://127.0.0.1:8000/create/',{
             method: "POST",
@@ -57,7 +58,7 @@ class Writeblog extends Component {
       } 
     }
   render() {
-    
+    console.log(this.props.username) 
     return (
       <div className="container">
         <h3>Write Blog By Submitting Bellow Form</h3>

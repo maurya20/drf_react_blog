@@ -5,17 +5,30 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import Detail from "./components/Detail"
-import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
+import Detail from "./components/Detail";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Writeblog from "./components/Writeblog";
-
 
 class App extends Component {
   state = {
     logged_in: localStorage.getItem("token") ? true : false,
     username: "",
-    user_id:""
+    user_id: "",
   };
+
+  componentDidMount() {
+    if (this.state.logged_in) {
+      fetch('http://localhost:8000/current_user/', {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      })
+        .then(res => res.json())
+        .then(json => {
+          this.setState({ username: json.username,user_id:json.id });
+        });
+    }
+  }
 
   handle_login = (e, data) => {
     e.preventDefault();
@@ -26,18 +39,17 @@ class App extends Component {
       },
       body: JSON.stringify(data),
     })
-    
-      // .then((res) => res.json())
       .then((response) => {
-        if(!response.ok) throw new Error(response.status);
+        if (!response.ok) throw new Error(response.status);
         else return response.json();
       })
       .then((json) => {
         localStorage.setItem("token", json.token);
+
         this.setState({
           logged_in: true,
           username: json.user.username,
-          user_id:json.user.id
+          user_id: json.user.id,
         });
       });
   };
@@ -46,9 +58,7 @@ class App extends Component {
     localStorage.removeItem("token");
     this.setState({ logged_in: false, username: "" });
   };
-
   render() {
-    
     return (
       <div>
         <BrowserRouter>
@@ -59,7 +69,9 @@ class App extends Component {
             {...this.state}
           />
 
-          <Route exact path="/" component={Home} />
+          <Route exact path="/">
+            <Home {...this.state} />
+          </Route>
           <Route path="/about" component={About} />
           <Route path="/signup">
             <SignupForm />
@@ -75,12 +87,13 @@ class App extends Component {
               )
             }
           />
-          
+
           <Switch>
-          <Route path="/detail" component={Detail} />
+            <Route path="/detail" component={Detail} />
           </Switch>
-          <Route path="/writeblog"><Writeblog {...this.state} /></Route>
-          
+          <Route path="/writeblog">
+            <Writeblog {...this.state} />
+          </Route>
         </BrowserRouter>
         <Footer />
       </div>
