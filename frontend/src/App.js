@@ -14,6 +14,7 @@ class App extends Component {
   state = {
     logged_in: localStorage.getItem("token") ? true : false,
     username: "",
+    user_id:""
   };
 
   handle_login = (e, data) => {
@@ -36,6 +37,7 @@ class App extends Component {
         this.setState({
           logged_in: true,
           username: json.user.username,
+          user_id:json.user.id
         });
       });
   };
@@ -77,7 +79,7 @@ class App extends Component {
           <Switch>
           <Route path="/detail" component={Detail} />
           </Switch>
-          <Route path="/writeblog" component={Writeblog}></Route>
+          <Route path="/writeblog"><Writeblog {...this.state} /></Route>
           
         </BrowserRouter>
         <Footer />

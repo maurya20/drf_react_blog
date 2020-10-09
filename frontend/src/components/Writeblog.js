@@ -25,20 +25,21 @@ class Writeblog extends Component {
           content:event.target.value
         })
       }
-      authorChange = (event)=>{
-        this.setState({
-          author:event.target.value
-        })
-      }
+     
+
     
     
       handleFormSubmit=(event)=>{
+          if(this.props.logged_in !==true){
+              alert("You are not Logged-In")
+          }
+          else{
         event.preventDefault();
         let blogdata = {title:this.state.title,
           category:this.state.category,
           content:this.state.content,
-          author:this.state.author}
-          console.log(blogdata)
+          author:this.props.user_id}
+          
         fetch('http://127.0.0.1:8000/create/',{
             method: "POST",
             body: JSON.stringify(blogdata),
@@ -54,8 +55,9 @@ class Writeblog extends Component {
             })
         })
       } 
+    }
   render() {
-    console.log(this.state)
+    
     return (
       <div className="container">
         <h3>Write Blog By Submitting Bellow Form</h3>
@@ -92,15 +94,6 @@ class Writeblog extends Component {
               placeholder="Enter Blog content"
               onChange={this.contentChange}
               value={this.state.content}
-            />
-          </div>
-          <div className="form-group">
-            <label>Author:</label>
-            <input
-              type="text"
-              className="form-control"
-              onChange={this.authorChange}
-              value={this.state.author}
             />
           </div>
 
