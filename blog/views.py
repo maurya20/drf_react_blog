@@ -119,6 +119,15 @@ class MyBlogs(generics.ListAPIView):
         return Blog.objects.filter(author_id=self.kwargs['author_id'])
 
 
+class Profiledetail(generics.RetrieveAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+
+
+
 class Profileupdate(generics.UpdateAPIView):
     permission_classes = []
     authentication_classes = []
