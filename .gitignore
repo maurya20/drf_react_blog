@@ -19,3 +19,4 @@ drf_react_blog/__pycache__/urls.cpython-38.pyc
 drf_react_blog/__pycache__/wsgi.cpython-38.pyc
 
 node_modules/
+media/

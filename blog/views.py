@@ -143,6 +143,14 @@ class Profilecreate(generics.CreateAPIView):
 
 
 
+class Myprof(generics.ListAPIView):
+    permission_classes = []
+    authentication_classes = []
+    serializer_class = ProfileSerializer
+
+    def get_queryset(self):
+        return Profile.objects.filter(user_id=self.kwargs['user_id'])
+
 # class UserList(APIView):
 #     """
 #     Create a new user. It's called 'UserList' because normally we'd have a get
