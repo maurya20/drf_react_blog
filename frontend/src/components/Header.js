@@ -46,7 +46,7 @@ const Header = (props) => {
               <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to="/myblogs">My Blogs</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to="/myprofile">My Profile</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/editprofile">Edit Profile</Link></NavDropdown.Item>
+              
             </NavDropdown>
           </Nav>
           <Nav>
