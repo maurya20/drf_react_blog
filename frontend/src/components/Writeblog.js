@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom"
 
 
 class Writeblog extends Component {
@@ -62,10 +63,17 @@ class Writeblog extends Component {
       } 
     }
   render() {
-    console.log(this.props.username) 
+     let check =()=>{ 
+      if(this.props.logged_in!==true){
+      return <h3>But First <Link to="/login">Login</Link></h3>
+    }
+    else{
+      return null
+    }
+  }
     return (
       <div className="container">
-        <h3>Write Blog By Submitting Bellow Form</h3>
+        <h3>Write Blog By Submitting Bellow Form {check()}</h3>
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
             <label>Title:</label>
