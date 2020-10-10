@@ -9,6 +9,7 @@ import Detail from "./components/Detail";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Writeblog from "./components/Writeblog";
 import Myblogs from "./components/Myblogs";
+import Myprofile from './components/Myprofile'
 
 class App extends Component {
   state = {
@@ -94,6 +95,7 @@ class App extends Component {
             <Route path="/detail" component={Detail} />
           </Switch>
           <Route path="/myblogs"><Myblogs {...this.state} /></Route>
+          <Route path="/myprofile"><Myprofile {...this.state} /></Route>
         </BrowserRouter>
         <Footer />
       </div>

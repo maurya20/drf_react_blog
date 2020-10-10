@@ -65,7 +65,7 @@ class Writeblog extends Component {
   render() {
      let check =()=>{ 
       if(this.props.logged_in!==true){
-      return <h3>But First <Link to="/login">Login</Link></h3>
+      return <h3>But First <Link to="/login">Login</Link>👈</h3>
     }
     else{
       return null

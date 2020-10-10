@@ -1,5 +1,5 @@
-from .models import Blog
-from .serializers import BlogSerializer
+from .models import Blog, Profile
+from .serializers import BlogSerializer,ProfileSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics
@@ -117,6 +117,13 @@ class MyBlogs(generics.ListAPIView):
 
     def get_queryset(self):
         return Blog.objects.filter(author_id=self.kwargs['author_id'])
+
+
+class Profileupdate(generics.UpdateAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 
 # class UserList(APIView):
