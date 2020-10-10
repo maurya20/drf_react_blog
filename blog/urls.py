@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import Blogslist,Blogdetail,Blogcreate,Blogupdate,Blogdelete,SignupView,Userdetail
-from .views import current_user,MyBlogs,Bloglist,Profileupdate
+from .views import current_user,MyBlogs,Bloglist,Profilecreate,Profileupdate
 
 
 urlpatterns = [
@@ -15,7 +15,8 @@ urlpatterns = [
     path('bloglist/', Bloglist.as_view()),
     path('userdetail/<str:pk>', Userdetail.as_view()),
     path('myblogs/<int:author_id>', MyBlogs.as_view()),
-    path('profile/<str:pk>', Profileupdate.as_view()),
+    path('api/updateprofile/<str:pk>', Profileupdate.as_view()),
+    path('api/createprofile/<str:pk>', Profilecreate.as_view()),
 ]
 
 

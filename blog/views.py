@@ -126,6 +126,14 @@ class Profileupdate(generics.UpdateAPIView):
     serializer_class = ProfileSerializer
 
 
+class Profilecreate(generics.CreateAPIView):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+
+
 # class UserList(APIView):
 #     """
 #     Create a new user. It's called 'UserList' because normally we'd have a get
