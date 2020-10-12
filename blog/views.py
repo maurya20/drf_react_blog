@@ -11,6 +11,9 @@ from .serializers import UserSerializer, UserSerializerWithToken
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.generics import ListAPIView
+from django.db import transaction
+from rest_framework import generics, mixins, permissions
+
 
 
 class Blogslist(APIView):
@@ -86,6 +89,8 @@ class SignupView(APIView):
             else:
                 user = User.objects.create_user(username=username,email=email,password=password)
                 user.save()
+                userprofile = Profile.objects.create(user_id=request.user.id)
+                userprofile.save()
                 return Response({"success":"A new user created sucessfully"})
         else:
             return Response({"error":"Password do not match"})
@@ -134,7 +139,6 @@ class Profileupdate(generics.UpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
-
 class Profilecreate(generics.CreateAPIView):
     permission_classes = []
     authentication_classes = []
@@ -150,6 +154,32 @@ class Myprof(generics.ListAPIView):
 
     def get_queryset(self):
         return Profile.objects.filter(user_id=self.kwargs['user_id'])
+
+
+
+
+
+
+
+
+
+# class UserProfileChangeAPIView(generics.RetrieveAPIView,
+#                                mixins.DestroyModelMixin,
+#                                mixins.UpdateModelMixin):
+#     permission_classes = ()
+#     serializer_class = ProfileSerializer
+   
+
+   
+  
+
+#     @transaction.atomic
+#     def delete(self, request, *args, **kwargs):
+#         return self.destroy(request, *args, **kwargs)
+
+#     @transaction.atomic
+#     def put(self, request, *args, **kwargs):
+#         return self.update(request, *args, **kwargs)
 
 # class UserList(APIView):
 #     """

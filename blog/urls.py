@@ -11,7 +11,6 @@ urlpatterns = [
     path('delete/<str:pk>',Blogdelete.as_view()),
     path('signup/',SignupView.as_view()),
     path('current_user/',current_user),
-    # path('users/', UserList.as_view()),
     path('bloglist/', Bloglist.as_view()),
     path('userdetail/<str:pk>', Userdetail.as_view()),
     path('myblogs/<int:author_id>', MyBlogs.as_view()),
@@ -19,6 +18,7 @@ urlpatterns = [
     path('api/createprofile/<str:pk>', Profilecreate.as_view()),
     path('api/profiledetail/<str:pk>', Profiledetail.as_view()),
     path('api/myprof/<int:user_id>', Myprof.as_view()),
+    
 ]
 
 
