@@ -90,7 +90,7 @@ class SignupView(APIView):
             else:
                 user = User.objects.create_user(username=username,email=email,password=password)
                 user.save()
-                userprofile = Profile.objects.create(user_id=request.user.id)
+                userprofile = Profile.objects.create(user=user,phone="default",hobbies="default",profession="default",quotes="default")
                 userprofile.save()
                 return Response({"success":"A new user created sucessfully"})
         else:
