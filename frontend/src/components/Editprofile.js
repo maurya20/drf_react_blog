@@ -64,7 +64,7 @@ class Editprofile extends Component {
     else{
   event.preventDefault();
   let profiledata = {
-    image:this.state.uid,
+    // image:this.state.pictures,
     phone:this.state.phone,
     hobbies:this.state.hobbies,
     profession:this.state.profession,

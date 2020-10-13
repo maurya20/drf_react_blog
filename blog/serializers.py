@@ -3,6 +3,7 @@ from .models import Blog, User,Profile
 from django.contrib.auth.models import User, auth
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
+# import base64
 
 
 class BlogSerializer(serializers.ModelSerializer):
@@ -21,7 +22,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    # user=User.objects.all()
+    # image = Base64ImageField(max_length=None, use_url=True,
+    #     required=False,
+    #     allow_null=True,
+    #     allow_empty_file=True)
     class Meta:
         model = Profile
         fields = '__all__'
