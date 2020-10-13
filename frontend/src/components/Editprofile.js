@@ -130,7 +130,7 @@ class Editprofile extends Component {
           <br></br>
         </div>
         <br></br>
-        <h1>{this.props.user_id}</h1>
+        
       </div>
     );
   }

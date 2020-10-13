@@ -25,6 +25,18 @@ const Header = (props) => {
       </Link>
     </Nav>
   );
+
+
+  const author_nav = ()=>{
+    if(props.logged_in)
+    return(
+            <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
+              <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link to="/myblogs">My Blogs</Link></NavDropdown.Item>
+              <NavDropdown.Item ><Link to="/myprofile">My Profile</Link></NavDropdown.Item>
+            </NavDropdown>
+    )
+  }
   return (
     <div>
       <Navbar className="navbar" collapseOnSelect expand="lg" variant="dark">
@@ -42,12 +54,7 @@ const Header = (props) => {
               {" "}
               <Link to={"/about"}>About</Link>
             </Nav.Link>
-            <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
-              <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/myblogs">My Blogs</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/myprofile">My Profile</Link></NavDropdown.Item>
-              
-            </NavDropdown>
+  <div>{author_nav()}</div>
           </Nav>
           <Nav>
             <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>
