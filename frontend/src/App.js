@@ -11,6 +11,7 @@ import Writeblog from "./components/Writeblog";
 import Myblogs from "./components/Myblogs";
 import Myprofile from './components/Myprofile'
 import Editprofile from "./components/Editprofile"
+import Category from "./components/Category";
 
 class App extends Component {
   state = {
@@ -98,6 +99,7 @@ class App extends Component {
           <Route path="/myblogs"><Myblogs {...this.state} /></Route>
           <Route path="/myprofile"><Myprofile {...this.state} /></Route>
           <Route path="/editprofile"><Editprofile {...this.state} /></Route>
+          <Route path="/bycategory"><Category {...this.state} /></Route>
         </BrowserRouter>
         <Footer />
       </div>

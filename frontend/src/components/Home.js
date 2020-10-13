@@ -48,14 +48,14 @@ this.state = {
       return (
           <div className="container">
             <ul className="category-nav">
-  <li><a href="#home">Agriculture</a></li>
-  <li><a href="#contact">Education</a></li>
-  <li><a href="#about">Science&Tech</a></li>
-  <li><a href="#contact">Economics</a></li>
-  <li><a href="#contact">Gadgets</a></li>
-  <li><a href="#contact">Travel</a></li>
-  <li><a href="#clients">Books&Literature</a></li>  
-  <li><a href="#contact">Other</a></li>
+  <li><Link to={`/bycategory/?c=Agriculture`}>Agriculture</Link></li>
+  <li><Link to={`/bycategory/?c=Education`}>Education</Link></li>
+  <li><Link to={`/bycategory/?c=Science&Tech`}>Science&Tech</Link></li>
+  <li><Link to={`/bycategory/?c=Economics`}>Economics</Link></li>
+  <li><Link to={`/bycategory/?c=Gadgets`}>Gadgets</Link></li>
+  <li><Link to={`/bycategory/?c=Travel`}>Travel</Link></li>
+  <li><Link to={`/bycategory/?c=Books&Literature`}>Books&Literature</Link></li>  
+  <li><Link to={`/bycategory/?c=Other`}>Other</Link></li>
 </ul>
             <br/>
         <div className="row">

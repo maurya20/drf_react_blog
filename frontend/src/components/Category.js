@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 
 class Category extends Component {
-    onstructor(props){
+    constructor(props){
         super(props)
     this.state = {
             data: [],
@@ -13,13 +13,9 @@ class Category extends Component {
         
         }
         componentDidMount() {
-            if(this.props.logged_in !==true){
-                alert("You are not Logged-In")
-                window.location.href = "http://localhost:3000/login"
-            }
-            else{
-          let author_id=this.props.user_id
-          fetch(`http://127.0.0.1:8000/myblogs/${author_id}`, {
+            let params = new URL(window.location.href).searchParams;
+            let id = params.get("c");
+          fetch(`http://127.0.0.1:8000/api/blogsbycategory/${id}`, {
             headers: {
               'Content-Type': 'application/json',
               Authorization: `JWT ${localStorage.getItem('token')}`
@@ -43,15 +39,16 @@ class Category extends Component {
               });
             });
         }
-        }
+        
       
       
         render() {
-            
+            let params = new URL(window.location.href).searchParams;
+            let id = params.get("c");
           return (
               <div className="container">
                 <br/>
-          <h3>Blogs By {this.props.username}</h3>
+          <h3>Blogs In {id} Category</h3>
             <div className="row">
               {this.state.data.map((blog) => {
                 return (
