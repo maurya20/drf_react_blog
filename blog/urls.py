@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import Blogslist,Blogdetail,Blogcreate,Blogupdate,Blogdelete,SignupView,Userdetail
-from .views import current_user,MyBlogs,Bloglist,Profilecreate,Profileupdate,Profiledetail,Myprof
+from .views import BlogsByCategory, Blogslist,Blogdetail,Blogcreate,Blogupdate,Blogdelete,SignupView,Userdetail
+from .views import current_user,MyBlogs,Bloglist,Profilecreate,Profileupdate,Profiledetail,Myprof,BlogsByCategory
 
 
 urlpatterns = [
@@ -18,6 +18,7 @@ urlpatterns = [
     path('api/createprofile/<str:pk>', Profilecreate.as_view()),
     path('api/profiledetail/<str:pk>', Profiledetail.as_view()),
     path('api/myprof/<int:user_id>', Myprof.as_view()),
+    path('api/blogsbycategory/<str:category>', BlogsByCategory.as_view()),
     
 ]
 

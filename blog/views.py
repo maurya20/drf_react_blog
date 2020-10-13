@@ -124,6 +124,14 @@ class MyBlogs(generics.ListAPIView):
     def get_queryset(self):
         return Blog.objects.filter(author_id=self.kwargs['author_id'])
 
+class BlogsByCategory(generics.ListAPIView):
+    permission_classes = []
+    authentication_classes = []
+    serializer_class = BlogSerializer
+
+    def get_queryset(self):
+        return Blog.objects.filter(category=self.kwargs['category'])
+
 
 class Profiledetail(generics.RetrieveAPIView):
     permission_classes = []
