@@ -26,6 +26,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     #     required=False,
     #     allow_null=True,
     #     allow_empty_file=True)
+    image = serializers.FileField()
     class Meta:
         model = Profile
         fields = '__all__'

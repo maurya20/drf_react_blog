@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import ImageUploader from 'react-images-upload'
+// import ImageUploader from 'react-images-upload'
+import axios from "axios";
 
 
 class Editprofile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pictures: [],
+      image: null,
       phone: "",
       hobbies: "",
       profession: "",
@@ -14,24 +15,24 @@ class Editprofile extends Component {
       uid: this.props.user_id
       
     };
-    this.onDrop = this.onDrop.bind(this);
+    // this.onDrop = this.onDrop.bind(this);
   }
 
 
  
-  onDrop(picture) {
+//   onDrop(picture) {
+//     this.setState({
+//         pictures: this.state.pictures.concat(picture),
+//     });
+// }
+
+
+
+  imageChange = (event) => {
     this.setState({
-        pictures: this.state.pictures.concat(picture),
+      image: event.target.files[0],
     });
-}
-
-
-
-  // imageChange = (event) => {
-  //   this.setState({
-  //     image: event.target.files[0],
-  //   });
-  // };
+  };
 
   phoneChange = (event) => {
     this.setState({
@@ -63,37 +64,60 @@ class Editprofile extends Component {
     }
     else{
   event.preventDefault();
-  let profiledata = {
-    // image:this.state.pictures,
-    phone:this.state.phone,
-    hobbies:this.state.hobbies,
-    profession:this.state.profession,
-    quotes:this.state.quotes,
-    user: this.state.uid
-  }
+  // let profiledata = {
+  //   image:this.state.image,
+  //   phone:this.state.phone,
+  //   hobbies:this.state.hobbies,
+  //   profession:this.state.profession,
+  //   quotes:this.state.quotes,
+  //   user: this.state.uid
+  // }
   let params = new URL(window.location.href).searchParams;
   let id = params.get("pid");
   console.log(id)
-  fetch(`http://127.0.0.1:8000/api/updateprofile/${id}`,{
-      method: "PUT",
-      body: JSON.stringify(profiledata),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    }).then(response => {
-      if(!response.ok) throw new Error(response.status);
-      else 
-      response.json().then(data =>{
-        alert("Profile Updated Successfully")
-      })
+
+  console.log(this.state);
+  let form_data = new FormData();
+  form_data.append('image', this.state.image, this.state.image.name);
+  form_data.append('phone', this.state.phone);
+  form_data.append('hobbies', this.state.hobbies);
+  form_data.append('profession', this.state.profession);
+  form_data.append('quotes', this.state.quotes);
+  form_data.append('user', this.state.uid);
+  let url = `http://127.0.0.1:8000/api/updateprofile/${id}`;
+  axios.put(url, form_data, {
+    headers: {
+      'content-type': 'multipart/form-data'
+    }
   })
-} 
-}
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
+};
+  }
+
+//   fetch(`http://127.0.0.1:8000/api/updateprofile/${id}`,{
+//       method: "PUT",
+//       body:(profiledata),
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json',
+//         'Media-Type':'application/x-www-form-urlencoded'
+//       },
+//     }).then(response => {
+//       if(!response.ok) throw new Error(response.status);
+//       else 
+//       response.json().then(data =>{
+//         alert("Profile Updated Successfully")
+//       })
+//   })
+// } 
+// }
 
 
   render() {
-    console.log(this.state.pictures)
+    console.log(this.state.image)
     console.log(this.state.uid)
     return (
       <div className="container">
@@ -104,21 +128,18 @@ class Editprofile extends Component {
           <form onSubmit={this.handleFormSubmit}>
             <label>Select image:</label>
 
-            <ImageUploader
+            {/* <ImageUploader
                 withIcon={true}
                 buttonText='Choose images'
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}
-            />
-            {/* <input
+            /> */}
+            <input
               type="file"
-              id="img"
-              name="img"
               accept="image/*"
               onChange={this.imageChange}
-              value={this.state.image}
-            /> */}
+            />
             <div className="form-group">
               <label>Phone:</label>
               <input
