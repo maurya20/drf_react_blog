@@ -13,10 +13,10 @@ class Writeblog extends Component {
           file: null,
           imgSrc:''
         }
-        this.imageChange = this.imageChange.bind(this)
+
       }
 
-      imageChange(event) {
+      imageChange = (event)=> {
         this.setState({
           file: URL.createObjectURL(event.target.files[0])
         })
