@@ -9,9 +9,19 @@ class Writeblog extends Component {
           title: '',
           category: '',
           content:'',
-          author:''
+          author:'',
+          file: null,
+          imgSrc:''
         }
+        this.imageChange = this.imageChange.bind(this)
       }
+
+      imageChange(event) {
+        this.setState({
+          file: URL.createObjectURL(event.target.files[0])
+        })
+      }
+
       titleChange = (event)=>{
         this.setState({
           title:event.target.value
@@ -27,7 +37,7 @@ class Writeblog extends Component {
           content:event.target.value
         })
       }
-     
+      
 
     
     
@@ -71,10 +81,16 @@ class Writeblog extends Component {
       return null
     }
   }
+  console.log(this.state.imgSrc)
     return (
       <div className="container">
         <h3>Write Blog By Submitting Bellow Form {check()}</h3>
         <form onSubmit={this.handleFormSubmit}>
+          <div className="form-group">
+          <label>Select Blog Image:</label>
+          <input type="file" onChange={this.imageChange}/>
+           <img src={this.state.file}  width="550" height="280"/>
+           </div>
           <div className="form-group">
             <label>Title:</label>
             <input
