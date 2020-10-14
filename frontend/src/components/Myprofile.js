@@ -61,12 +61,12 @@ class Myprofile extends Component {
                 ></img>
               </div>
               <div className="col-6 bg-white">
-                <h5>Phone <span>👉</span> {profile.phone}</h5>
-                <h5>Hobbies<span>👉</span> {profile.hobbies}</h5>
-                <h5>Profession<span>👉</span> {profile.profession}</h5>
-                <h5>Favourite Quote<span>👉</span> {profile.quotes}</h5>
+                <h5>Phone <span>☎️</span> {profile.phone}</h5><hr/>
+                <h5>Hobbies<span>🎮🎼🎧🎸</span> {profile.hobbies}</h5><hr/>
+                <h5>Profession<span> 👩🏾‍🧑🏾‍💼</span> {profile.profession}</h5><hr/>
+                <h5>Favourite Quote<span> 👌 </span> {profile.quotes}</h5><hr/>
               </div>
-              <div className="col bg-white"><h5><span>👉</span><Link to={`/editprofile/?pid=${profile.id}`}>Edit Profile</Link></h5></div>
+              <div className="col bg-white"><h5><span>⚙️</span><Link to={`/editprofile/?pid=${profile.id}`}>Edit Profile</Link></h5></div>
             </div>
           );
         })}

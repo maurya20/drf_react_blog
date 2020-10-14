@@ -51,7 +51,7 @@ class Myblogs extends Component {
           return (
               <div className="container">
                 <br/>
-          <h3>Blogs By {this.props.username}</h3>
+          <h3>Blogs By Me</h3>
             <div className="row">
               {this.state.data.map((blog) => {
                 return (
