@@ -46,3 +46,11 @@ color: rgb(187, 255, 0);
    background-color:gray;
    text-align: center;
 }
+
+
+/* For Detail page */
+.col-6{
+   color: aliceblue;
+   background-color: black;
+   z-index: 5;
+}

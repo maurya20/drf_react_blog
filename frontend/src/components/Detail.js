@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "../App.css";
 import Author from "./Author";
+import {Link} from 'react-router-dom'
 
-export class Detail extends Component {
+class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,22 +43,26 @@ export class Detail extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row" >
-          <div className="col bg-info">
+          <div className="col bg">
             <h6 style={{ color: "white" }}>
-              Category: {this.state.data.category}
+              Category: 
             </h6>
+            <h5><Link to={`/bycategory/?c=${this.state.data.category}`}>{this.state.data.category}</Link></h5>
           </div>
-          <div className="col-6 bg-warning">
-            <h5>{this.state.data.title} </h5>
+          <div className="col-6">
+            <h5>❝ {this.state.data.title} ❞</h5>
             <p>Published on: {this.state.data.created_on}</p>
           </div>
-          <div className="col bg-info" style={{color:"white"}}>
+          <div className="col bg" style={{color:"white"}}>
             <Author />
           </div>
         </div>
+        <div>
+</div>
         <div className="blog-image">
+
           <img
             src="https://source.unsplash.com/random"
             alt="Some Blog Pic"
