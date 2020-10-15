@@ -117,8 +117,8 @@ def current_user(request):
 
 
 class MyBlogs(generics.ListAPIView):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [JSONWebTokenAuthentication]
+    permission_classes = []
+    authentication_classes = []
     serializer_class = BlogSerializer
 
     def get_queryset(self):
@@ -136,8 +136,9 @@ class BlogsByCategory(generics.ListAPIView):
 class Profiledetail(generics.RetrieveAPIView):
     permission_classes = []
     authentication_classes = []
-    queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    def get_queryset(self):
+        return Profile.objects.filter(user_id=self.kwargs['user_id'])
 
 
 
@@ -148,24 +149,7 @@ class Profileupdate(generics.UpdateAPIView):
     parser_classes = (FormParser, MultiPartParser)
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    # def perform_update(self, serializer):
-    #     file_obj = self.request.FILES['image']
-
-    # def put(self, request, format=None):
-    #     my_file = request.FILES['image']
-    #     filename = '/tmp/myfile'
-    #     with open(filename, 'wb+') as temp_file:
-    #         for chunk in my_file.chunks():
-    #             temp_file.write(chunk)
-
-    #     my_saved_file = open(filename) #there you go
-
-class Profilecreate(generics.CreateAPIView):
-    permission_classes = []
-    authentication_classes = []
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer
-
+   
 
 
 class Myprof(generics.ListAPIView):

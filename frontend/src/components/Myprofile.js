@@ -11,7 +11,6 @@ class Myprofile extends Component {
   componentDidMount() {
     // let params = new URL(window.location.href).searchParams;
     let id = this.props.user_id;
-  console.log(id)
     fetch(`http://127.0.0.1:8000/api/myprof/${id}`, {
       headers: {
         "Content-Type": "application/json",

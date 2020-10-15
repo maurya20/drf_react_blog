@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # from django.db.models.signals import post_save
 # from django.dispatch import receiver
 from django.conf import settings
-from datetime import datetime
+import datetime
 
 from django.db.models.deletion import CASCADE
 
@@ -13,7 +13,7 @@ class Blog(models.Model):
     category = models.CharField(max_length=35, null =True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,blank= True)
     content = models.TextField(null =True)
-    created_on = models.DateTimeField(auto_now_add=True, null =True)
+    created_on = models.DateTimeField(("Date"), default=datetime.date.today)
     blog_pic = models.ImageField(default='blogs.jpg', upload_to='blog_pics/', null='True', blank= 'True')
     
 
