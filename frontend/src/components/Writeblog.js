@@ -86,7 +86,7 @@ class Writeblog extends Component {
       return <div className="col-7 bg">
       <h3>Preview your Blog</h3>
       <img src={this.state.file}  width="610" height="280"/>
-      <h4>"{this.state.title}"</h4>
+      <h4>❝ {this.state.title} ❞</h4>
     <h4>Category:{this.state.category}</h4>
       <br></br>
       <p>{this.state.content}</p></div>
@@ -100,7 +100,7 @@ class Writeblog extends Component {
       <div className="container">
         <h3>Write Blog By Submitting Bellow Form {check()}</h3>
         <div className="row">
-  <div className="col-5 bg-dark"><form onSubmit={this.handleFormSubmit}>
+  <div className="col-5 bg"><form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
           <label>Select Blog Image:</label>
           <input type="file" onChange={this.imageChange}/>
