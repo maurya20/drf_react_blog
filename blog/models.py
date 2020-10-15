@@ -13,7 +13,7 @@ class Blog(models.Model):
     category = models.CharField(max_length=35, null =True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,blank= True)
     content = models.TextField(null =True)
-    created_on = models.DateTimeField(("Date"), default=datetime.date.today)
+    created_on = models.DateTimeField(auto_now=True)
     blog_pic = models.ImageField(default='blogs.jpg', upload_to='blog_pics/', null='True', blank= 'True')
     
 
