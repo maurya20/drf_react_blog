@@ -64,14 +64,14 @@ class Detail extends Component {
         <div className="blog-image">
 
           <img
-            src="https://source.unsplash.com/random"
+            src={this.state.data.blog_pic}
             alt="Some Blog Pic"
             width="100%"
             height="500"
           />
         </div>
         <br />
-        <p>{this.state.data.content}</p>
+        <h6>{this.state.data.content}</h6>
       </div>
     );
   }

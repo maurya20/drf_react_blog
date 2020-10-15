@@ -14,7 +14,7 @@ class Blog(models.Model):
     author = models.ForeignKey(User, on_delete= models.CASCADE,blank= True)
     content = models.TextField(null =True)
     created_on = models.DateTimeField(auto_now_add=True, null =True)
-    blog_pic = models.ImageField(default='default.jpg', upload_to='blog_pics/', null='True', blank= 'True')
+    blog_pic = models.ImageField(default='blogs.jpg', upload_to='blog_pics/', null='True', blank= 'True')
     
 
     def __str__(self):

@@ -55,12 +55,12 @@ class Myprofile extends Component {
                 <img
                   src={profile.image}
                   alt="My profile Pic"
-                  height="300px"
-                  width="300px"
-                  style={{ borderRadius: "30%" }}
+                  height="260px"
+                  width="240px"
+                  style={{ borderRadius: "40%" }}
                 ></img>
               </div>
-              <div className="col-6 bg-white">
+              <div className="col-6 bg-secondary">
                 <h5>Phone <span>☎️</span> {profile.phone}</h5><hr/>
                 <h5>Hobbies<span>🎮🎼🎧🎸</span> {profile.hobbies}</h5><hr/>
                 <h5>Profession<span> 👩🏾‍🧑🏾‍💼</span> {profile.profession}</h5><hr/>

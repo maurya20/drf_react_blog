@@ -54,7 +54,7 @@ class Category extends Component {
                 return (
                   <div className="col-md-4" key={blog.id}>
                     <div className="thumbnail">
-                      <img src="https://picsum.photos/200" alt="Nature" style={{width:"100%"}}></img>
+                      <img src={blog.blog_pic} alt="Nature" style={{width:"100%"}}></img>
                       
                     </div>
                     <Card.Footer>
