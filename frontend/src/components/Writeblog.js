@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom"
+import axios from "axios";
 
 
 class Writeblog extends Component {
@@ -11,13 +12,14 @@ class Writeblog extends Component {
           content:'',
           author:'',
           file: null,
-          imgSrc:''
+          blog_pic:''
         }
 
       }
 
       imageChange = (event)=> {
         this.setState({
+          blog_pic: event.target.files[0],
           file: URL.createObjectURL(event.target.files[0])
         })
       }
@@ -50,28 +52,27 @@ class Writeblog extends Component {
           }
           else{
         event.preventDefault();
-        let blogdata = {title:this.state.title,
-          category:this.state.category,
-          content:this.state.content,
-          author:this.props.user_id}
-  
-          
-        fetch('http://127.0.0.1:8000/create/',{
-            method: "POST",
-            body: JSON.stringify(blogdata),
+        let form_data = new FormData();
+        form_data.append("title", this.state.title);
+        form_data.append("category", this.state.category);
+        form_data.append("content", this.state.content);
+        form_data.append("author", this.props.user_id);
+        form_data.append("blog_pic", this.state.blog_pic, this.state.blog_pic.name);
+        let url = `http://127.0.0.1:8000/create/`;
+        axios
+          .post(url, form_data, {
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              "content-type": "multipart/form-data",
             },
-          }).then(response => {
-            if(!response.ok) throw new Error(response.status);
-            else 
-            response.json().then(data =>{
-              alert("Blog Created Successfully")
-            })
-        })
-      } 
-    }
+          })
+          .then((res) => {
+            console.log(res.data);
+            alert("Blog Posted Successfully")
+          })
+          .catch((err) => console.log(err));
+      }
+    };
+        
   render() {
      let check =()=>{ 
       if(this.props.logged_in!==true){
@@ -85,7 +86,7 @@ class Writeblog extends Component {
     if(this.state.file!==null||this.state.title!==""){
       return <div className="col-7 bg">
       <h3>Preview your Blog</h3>
-      <img src={this.state.file}  width="610" height="280"/>
+      <img src={this.state.file} alt=""  width="610" height="280"/>
       <h4>❝ {this.state.title} ❞</h4>
     <h4>Category:{this.state.category}</h4>
       <br></br>

@@ -82,7 +82,7 @@ class Editprofile extends Component {
           <h3>Edit Profile</h3>
           <form onSubmit={this.handleFormSubmit}>
             <label>Select image:</label>
-            <input type="file" accept="image/*" onChange={this.imageChange} /><img src={this.state.preview}  width="150" height="150"/>
+            <input type="file" accept="image/*" onChange={this.imageChange} /><img src={this.state.preview} alt="" width="150" height="150"/>
             <div className="form-group">
               <label>Phone:</label>
               <input
