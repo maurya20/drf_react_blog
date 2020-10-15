@@ -81,15 +81,30 @@ class Writeblog extends Component {
       return null
     }
   }
+  let preview = ()=>{
+    if(this.state.file!==null||this.state.title!==""){
+      return <div className="col-7 bg">
+      <h3>Preview your Blog</h3>
+      <img src={this.state.file}  width="610" height="280"/>
+      <h4>"{this.state.title}"</h4>
+    <h4>Category:{this.state.category}</h4>
+      <br></br>
+      <p>{this.state.content}</p></div>
+    }
+    else{
+      return null
+    }
+  }
   console.log(this.state.imgSrc)
     return (
       <div className="container">
         <h3>Write Blog By Submitting Bellow Form {check()}</h3>
-        <form onSubmit={this.handleFormSubmit}>
+        <div className="row">
+  <div className="col-5 bg-dark"><form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
           <label>Select Blog Image:</label>
           <input type="file" onChange={this.imageChange}/>
-           <img src={this.state.file}  width="550" height="280"/>
+           
            </div>
           <div className="form-group">
             <label>Title:</label>
@@ -130,7 +145,10 @@ class Writeblog extends Component {
             Submit
           </button>
         </form>
-        <br />
+        <br /></div>
+        {preview()} 
+</div>
+       
       </div>
     );
   }
