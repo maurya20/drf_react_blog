@@ -50,11 +50,11 @@ this.state = {
             <ul className="category-nav">
   <li><Link to={`/bycategory/?c=Agriculture`}>Agriculture</Link></li>
   <li><Link to={`/bycategory/?c=Education`}>Education</Link></li>
-  <li><Link to={`/bycategory/?c=Science&Tech`}>Science&Tech</Link></li>
+  <li><Link to={`/bycategory/?c=Science`}>Science</Link></li>
   <li><Link to={`/bycategory/?c=Economics`}>Economics</Link></li>
   <li><Link to={`/bycategory/?c=Gadgets`}>Gadgets</Link></li>
   <li><Link to={`/bycategory/?c=Travel`}>Travel</Link></li>
-  <li><Link to={`/bycategory/?c=Books&Literature`}>Books&Literature</Link></li>  
+  <li><Link to={`/bycategory/?c=Books`}>Books</Link></li>  
   <li><Link to={`/bycategory/?c=Other`}>Other</Link></li>
 </ul>
             <br/>

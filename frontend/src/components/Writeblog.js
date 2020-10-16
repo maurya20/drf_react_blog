@@ -123,11 +123,11 @@ class Writeblog extends Component {
             <option>Select Category</option>
               <option value="Agriculture">Agriculture</option>
               <option value="Education">Education</option>
-              <option value="Science&Tech">Science&Tech</option>
+              <option value="Science">Science</option>
               <option value="Economics">Economics</option>
               <option value="Gadgets">Gadgets</option>
               <option value="Travel">Travel</option>
-              <option value="Books&Literature">Books&Literature</option>
+              <option value="Books">Books</option>
               <option value="Other">Other</option>
             </select>
           </div>
