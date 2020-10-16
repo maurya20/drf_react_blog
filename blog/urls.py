@@ -1,9 +1,11 @@
 from django.urls import path, include
+from rest_framework import views
 from .views import BlogsByCategory, Blogslist,Blogdetail,Blogcreate,Blogupdate,Blogdelete,SignupView,Userdetail
 from .views import current_user,MyBlogs,Bloglist,Profileupdate,Profiledetail,Myprof,BlogsByCategory
-
+from . import views
 
 urlpatterns = [
+    path('',views.index,name='index'),
     path('blogs/',Blogslist.as_view()),
     path('detail/<str:pk>',Blogdetail.as_view()),
     path('create/',Blogcreate.as_view()),

@@ -14,6 +14,11 @@ from rest_framework.generics import ListAPIView
 from django.db import transaction
 from rest_framework import generics, mixins, permissions
 from rest_framework.parsers import MultiPartParser, FormParser
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 
