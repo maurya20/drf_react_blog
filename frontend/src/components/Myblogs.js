@@ -75,7 +75,9 @@ class Myblogs extends Component {
                             {
                               method: "DELETE",
                             }
-                          ); 
+                          )
+                        
+                          this.componentDidMount() 
                       }}
                       className="btn btn-danger"
                     >
