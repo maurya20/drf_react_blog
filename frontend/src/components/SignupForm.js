@@ -40,7 +40,8 @@ class SignupForm extends Component {
       password2:this.state.password2}
       if (this.state.password!== this.state.password2) {
         alert("Passwords don't match")
-        window.location.href = "http://localhost:3000/signup/"
+        
+        // window.location.href = "http://localhost:3000/signup/"
       }
       else
     fetch('http://127.0.0.1:8000/signup/',{
@@ -55,7 +56,7 @@ class SignupForm extends Component {
         else 
         response.json().then(data =>{
           alert(JSON.stringify(data))
-          window.location.href = "http://localhost:3000/login"
+          // window.location.href = "login"
         })
     })
   } 
