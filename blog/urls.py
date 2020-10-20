@@ -11,7 +11,7 @@ urlpatterns = [
     path('create/',Blogcreate.as_view()),
     path('update/<str:pk>',Blogupdate.as_view()),
     path('api/deleteblog/<str:pk>',Blogdelete.as_view()),
-    path('signup/',SignupView.as_view()),
+    path('api/user_signup/',SignupView.as_view()),
     path('current_user/',current_user),
     path('bloglist/', Bloglist.as_view()),
     path('userdetail/<str:pk>', Userdetail.as_view()),

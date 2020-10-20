@@ -38,13 +38,7 @@ class SignupForm extends Component {
       email:this.state.email,
       password:this.state.password,
       password2:this.state.password2}
-      if (this.state.password!== this.state.password2) {
-        alert("Passwords don't match")
-        
-        // window.location.href = "http://localhost:3000/signup/"
-      }
-      else
-    fetch('http://127.0.0.1:8000/signup/',{
+    fetch('http://127.0.0.1:8000/api/user_signup/',{
         method: "POST",
         body: JSON.stringify(userdata),
         headers: {
@@ -56,7 +50,6 @@ class SignupForm extends Component {
         else 
         response.json().then(data =>{
           alert(JSON.stringify(data))
-          // window.location.href = "login"
         })
     })
   } 
