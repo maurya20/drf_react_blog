@@ -12,8 +12,10 @@ Installing Packages-
 
 
 
+
 # dependencies for React Js frontend-
 Installing Packages-
-1. npm install --save react-router-dom
-2. npm i react-bootstrap
-3. npm i axios
+1. npm install 
+2. npm i axios
+
+# npm start
