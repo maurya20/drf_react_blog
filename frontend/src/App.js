@@ -13,12 +13,15 @@ import Myprofile from './components/Myprofile'
 import Editprofile from "./components/Editprofile"
 import Category from "./components/Category";
 import Bb from './components/Bb'
+import Pagenation from "./components/Pagenation";
+
 
 class App extends Component {
   state = {
     logged_in: localStorage.getItem("token") ? true : false,
     username: "",
     user_id: "",
+    msg:""
   };
 
   componentDidMount() {
@@ -45,7 +48,11 @@ class App extends Component {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        if (!response.ok) throw new Error(response.status);
+        if (!response.ok){this.setState({msg:"Invalid Credentials ❌ "})
+        setTimeout(()=>{
+          this.setState({msg:""})
+        },4000)
+      }
         else return response.json();
       })
       .then((json) => {
@@ -64,6 +71,7 @@ class App extends Component {
     this.setState({ logged_in: false, username: "" });
   };
   render() {
+    
     return (
       <div>
         <BrowserRouter>
@@ -72,7 +80,7 @@ class App extends Component {
             handle_logout={this.handle_logout}
             {...this.state}
           />
-
+         <div style={{color:'white',backgroundColor:"red",textAlign:'center'}}><h3>{this.state.msg}</h3></div>
           <Route exact path="/">
             <Home {...this.state} />
           </Route>
@@ -102,6 +110,7 @@ class App extends Component {
           <Route path="/editprofile"><Editprofile {...this.state} /></Route>
           <Route path="/bycategory"><Category {...this.state} /></Route>
           <Route path="/bb"><Bb {...this.state} /></Route>
+          <Route path="/pagenation"><Pagenation {...this.state} /></Route>
         </BrowserRouter>
         <Footer />
       </div>
