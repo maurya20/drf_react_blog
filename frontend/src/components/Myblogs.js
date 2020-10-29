@@ -66,7 +66,7 @@ class Myblogs extends Component {
                       </Link>
                     </h6>
                     <h6>
-                      Category: <Link to={"/about"}>{blog.category}</Link>{" "}
+                      Category: <Link to={`/bycategory/?c=${blog.category}`}>{blog.category}</Link>{" "}
                     </h6>
                     <button
                       onClick={() => {
