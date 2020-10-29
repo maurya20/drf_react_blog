@@ -58,7 +58,7 @@ class Writeblog extends Component {
         form_data.append("content", this.state.content);
         form_data.append("author", this.props.user_id);
         form_data.append("blog_pic", this.state.blog_pic, this.state.blog_pic.name);
-        let url = `http://127.0.0.1:8000/create/`;
+        let url = `http://127.0.0.1:8000/api/create/`;
         axios
           .post(url, form_data, {
             headers: {

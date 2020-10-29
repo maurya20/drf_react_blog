@@ -13,7 +13,7 @@ class Author extends Component {
   componentDidMount() {
     let params = new URL(window.location.href).searchParams;
     let user_id = params.get("user");
-    fetch(`http://127.0.0.1:8000/userdetail/${user_id}`, {
+    fetch(`http://127.0.0.1:8000/api/userdetail/${user_id}`, {
       headers: {
         "Content-Type": "application/json",
       },

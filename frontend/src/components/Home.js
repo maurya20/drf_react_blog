@@ -17,7 +17,7 @@ this.state = {
     }
     componentDidMount() {
        
-      fetch("http://127.0.0.1:8000/bloglist", {
+      fetch("http://127.0.0.1:8000/api/bloglist", {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `JWT ${localStorage.getItem('token')}`

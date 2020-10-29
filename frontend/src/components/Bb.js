@@ -15,7 +15,7 @@ class Bb extends Component {
         componentDidMount() {
               let params = new URL((window.location).href).searchParams
               let author_id = params.get('id')
-          fetch(`http://127.0.0.1:8000/myblogs/${author_id}`, {
+          fetch(`http://127.0.0.1:8000/api/myblogs/${author_id}`, {
             headers: {
               'Content-Type': 'application/json',
               // Authorization: `JWT ${localStorage.getItem('token')}`

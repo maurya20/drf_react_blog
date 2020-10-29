@@ -17,7 +17,7 @@ class Myblogs extends Component {
       window.location.href = "http://localhost:3000/login";
     } else {
       let author_id = this.props.user_id;
-      fetch(`http://127.0.0.1:8000/myblogs/${author_id}`, {
+      fetch(`http://127.0.0.1:8000/api/myblogs/${author_id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `JWT ${localStorage.getItem("token")}`,

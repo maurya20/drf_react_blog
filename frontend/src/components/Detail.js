@@ -17,7 +17,7 @@ class Detail extends Component {
     let params = new URL(window.location.href).searchParams;
     let id = params.get("id");
    
-    fetch(`http://127.0.0.1:8000/detail/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/detail/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `JWT ${localStorage.getItem("token")}`,
