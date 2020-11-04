@@ -80,29 +80,11 @@ class Writeblog extends Component {
     }
   };
 
-  render() {
-    let preview = () => {
-      if (this.state.file !== null || this.state.title !== "") {
-        return (
-          <div className="col-7 bg">
-            <h3>Preview your Blog</h3>
-            <img src={this.state.file} alt="" width="610" height="280" />
-            <h4>❝ {this.state.title} ❞</h4>
-            <h4>Category:{this.state.category}</h4>
-            <br></br>
-            <div>{this.state.editorState}</div>
-          </div>
-        );
-      } else {
-        return null;
-      }
-    };
+render() {
     const { editorState } = this.state;
-    
     return (
       <div className="container">
         <h3>Write Blog </h3>
-        <form onSubmit={this.handleFormSubmit}>
           <div className="row">
             <div className="col-3">
               <div className="form-group">
@@ -142,21 +124,28 @@ class Writeblog extends Component {
                 </select>
               </div>
             </div>
-
-
-<br></br>
-<br></br>
           </div>
-          <button type="submit" className="btn btn-primary"> Submit</button>
-        </form>
-
-        <Editor	
+<Editor	
 editorState={editorState}
 wrapperClassName="rich-editor demo-wrapper"	   
 editorClassName="demo-editor"	
 onEditorStateChange={this.onEditorStateChange}	  
-placeholder="The message goes here..."	       
+placeholder="Blog content goes here..."	       
 />
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+<form onSubmit={this.handleFormSubmit}>
+
+<button type="submit" className="btn btn-primary pull-right" style={{float:"right"}}> Submit</button>
+
+</form>
+<br></br>
+<br></br>
+
         {/* <h4>Underlying HTML</h4>
          <div className="html-view">{getHtml(editorState)}</div>
          
