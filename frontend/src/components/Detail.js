@@ -71,7 +71,8 @@ class Detail extends Component {
           />
         </div>
         <br />
-        <h6>{this.state.data.content}</h6>
+        {/* <h6>{this.state.data.content}</h6> */}
+        <div class="modal-body" dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
       </div>
     );
   }

@@ -10,7 +10,7 @@ import { PreviewModal } from './PreviewModal';
 
 
 const getHtml = editorState => draftToHtml(convertToRaw(editorState.getCurrentContent()));
-
+ console.log(getHtml)
 class Writeblog extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +58,7 @@ class Writeblog extends Component {
       let form_data = new FormData();
       form_data.append("title", this.state.title);
       form_data.append("category", this.state.category);
-      form_data.append("content", this.state.content);
+      form_data.append("content", getHtml(this.state.editorState));
       form_data.append("author", this.props.user_id);
       form_data.append(
         "blog_pic",
@@ -98,7 +98,7 @@ class Writeblog extends Component {
       }
     };
     const { editorState } = this.state;
-    console.log(this.state.editorState)
+    
     return (
       <div className="container">
         <h3>Write Blog </h3>
@@ -143,40 +143,29 @@ class Writeblog extends Component {
               </div>
             </div>
 
-            {/* <div className="form-group">
-              <label>Content:</label>
-              <textarea
-                type="text"
-                className="form-control"
-                placeholder="Enter Blog content"
-                onChange={this.contentChange}
-                value={this.state.content}
-              />
-            </div> */}
 
+<br></br>
+<br></br>
+          </div>
+          <button type="submit" className="btn btn-primary"> Submit</button>
+        </form>
 
-<Editor	
+        <Editor	
 editorState={editorState}
 wrapperClassName="rich-editor demo-wrapper"	   
 editorClassName="demo-editor"	
 onEditorStateChange={this.onEditorStateChange}	  
 placeholder="The message goes here..."	       
 />
-
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-        <h4>Underlying HTML</h4>
-        <div class="modal-body" dangerouslySetInnerHTML={{ __html: getHtml(editorState) }} />
-        	        
+        {/* <h4>Underlying HTML</h4>
+         <div className="html-view">{getHtml(editorState)}</div>
+         
         <br />
         <button className="btn btn-success" data-toggle="modal" data-target="#previewModal">
         Preview message	        
         </button>	      
         <PreviewModal output={getHtml(editorState)} /> {/* updated with output */}
-        {preview()}
+       
       </div>
     );
   }

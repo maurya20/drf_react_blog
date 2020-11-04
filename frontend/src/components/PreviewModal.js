@@ -33,7 +33,7 @@ export const PreviewModal = ({ output }) => (
             <span aria-hidden="true">&times;</span>{" "}
           </button>{" "}
         </div>{" "}
-        <div  dangerouslySetInnerHTML={{ __html: output }} />{" "}
+        <div class="modal-body" dangerouslySetInnerHTML={{ __html: output }} />{" "}
         <div class="modal-footer">
           {" "}
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
