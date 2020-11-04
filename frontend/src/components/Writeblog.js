@@ -5,12 +5,12 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { EditorState, convertToRaw } from 'draft-js';	
 import draftToHtml from 'draftjs-to-html';
-
+import { PreviewModal } from './PreviewModal';
 
 
 
 const getHtml = editorState => draftToHtml(convertToRaw(editorState.getCurrentContent()));
- console.log(getHtml)
+
 class Writeblog extends Component {
   constructor(props) {
     super(props);
@@ -169,8 +169,13 @@ placeholder="The message goes here..."
           </button>
         </form>
         <h4>Underlying HTML</h4>
-        	        <div className="html-view">	          {getHtml(editorState)}	        </div>
+        <div class="modal-body" dangerouslySetInnerHTML={{ __html: getHtml(editorState) }} />
+        	        
         <br />
+        <button className="btn btn-success" data-toggle="modal" data-target="#previewModal">
+        Preview message	        
+        </button>	      
+        <PreviewModal output={getHtml(editorState)} /> {/* updated with output */}
         {preview()}
       </div>
     );
