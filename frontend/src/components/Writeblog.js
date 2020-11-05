@@ -5,8 +5,8 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { EditorState, convertToRaw } from 'draft-js';	
 import draftToHtml from 'draftjs-to-html';
-import { PreviewModal } from './PreviewModal';
-import "../App.css"
+// import { PreviewModal } from './PreviewModal';
+// import "../App.css"
 
 
 const getHtml = editorState => draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -136,18 +136,16 @@ placeholder="Blog content goes here..."
 <button type="submit" className="btn btn-primary pull-right" style={{float:"right"}}> Submit</button>
 
 </form>
-<br></br>
-<br></br>
+
 
         {/* <h4>Underlying HTML</h4>
          <div className="html-view">{getHtml(editorState)}</div> */}
          
         <br />
-        <button className="btn btn-success" data-toggle="modal" data-target="#previewModal">
-        Preview Blog        
-        </button>	      
-        <PreviewModal output={getHtml(editorState)} /> 
-       
+        <hr></hr>
+       {/* <h4>Preview Your Blog</h4>
+        <h5>" {this.state.title} "</h5>
+       <div className="modal-body" dangerouslySetInnerHTML={{ __html: getHtml(this.state.editorState) }} /> */}
       </div>
     );
   }
