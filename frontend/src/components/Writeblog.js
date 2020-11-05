@@ -6,7 +6,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { EditorState, convertToRaw } from 'draft-js';	
 import draftToHtml from 'draftjs-to-html';
 import { PreviewModal } from './PreviewModal';
-
+import "../App.css"
 
 
 const getHtml = editorState => draftToHtml(convertToRaw(editorState.getCurrentContent()));
@@ -48,12 +48,6 @@ class Writeblog extends Component {
     };
 
   handleFormSubmit = (event) => {
-    if (this.props.logged_in !== true) {
-      alert("You are not Logged-In");
-      // window.location.href = "http://localhost:3000/login"
-      // const { history } = this.props.history;
-      // history.push("/login")
-    } else {
       event.preventDefault();
       let form_data = new FormData();
       form_data.append("title", this.state.title);
@@ -78,7 +72,6 @@ class Writeblog extends Component {
         })
         .catch((err) => console.log(err));
     }
-  };
 
 render() {
     const { editorState } = this.state;
@@ -147,13 +140,13 @@ placeholder="Blog content goes here..."
 <br></br>
 
         {/* <h4>Underlying HTML</h4>
-         <div className="html-view">{getHtml(editorState)}</div>
+         <div className="html-view">{getHtml(editorState)}</div> */}
          
         <br />
         <button className="btn btn-success" data-toggle="modal" data-target="#previewModal">
-        Preview message	        
+        Preview Blog        
         </button>	      
-        <PreviewModal output={getHtml(editorState)} /> {/* updated with output */}
+        <PreviewModal output={getHtml(editorState)} /> 
        
       </div>
     );

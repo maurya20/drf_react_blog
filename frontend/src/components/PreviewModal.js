@@ -6,26 +6,26 @@ import React from "react";
 
 export const PreviewModal = ({ output }) => (
   <div
-    class="modal fade"
+    className="modal fade"
     id="previewModal"
     tabindex="-1"
     role="dialog"
     aria-hidden="true"
   >
     {" "}
-    <div class="modal-dialog" role="document">
+    <div className="modal-dialog" role="document">
       {" "}
-      <div class="modal-content">
+      <div className="modal-content">
         {" "}
-        <div class="modal-header">
+        <div className="modal-header">
           {" "}
-          <h5 class="modal-title" id="exampleModalLabel">
+          <h5 className="modal-title" id="exampleModalLabel">
             {" "}
-            Preview Modal{" "}
+            Preview {" "}
           </h5>{" "}
           <button
             type="button"
-            class="close"
+            className="close"
             data-dismiss="modal"
             aria-label="Close"
           >
@@ -33,10 +33,11 @@ export const PreviewModal = ({ output }) => (
             <span aria-hidden="true">&times;</span>{" "}
           </button>{" "}
         </div>{" "}
-        <div class="modal-body" dangerouslySetInnerHTML={{ __html: output }} />{" "}
-        <div class="modal-footer">
+        <div className="modal-body" dangerouslySetInnerHTML={{ __html: output }} />{" "}
+        
+        <div className="modal-footer">
           {" "}
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button type="button" className="btn btn-secondary" data-dismiss="modal">
             {" "}
             Done{" "}
           </button>{" "}
