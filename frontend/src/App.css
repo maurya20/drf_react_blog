@@ -58,8 +58,8 @@ color: rgb(187, 255, 0);
 
 /* For write blog page */
 
-.modal {
-   max-width: 80%;
+.col-12{
+   border-style: inset;
 }
 
 

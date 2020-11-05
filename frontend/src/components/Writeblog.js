@@ -10,7 +10,7 @@ import draftToHtml from 'draftjs-to-html';
 
 
 const getHtml = editorState => draftToHtml(convertToRaw(editorState.getCurrentContent()));
- console.log(getHtml)
+//  console.log(getHtml)
 class Writeblog extends Component {
   constructor(props) {
     super(props);
@@ -118,6 +118,7 @@ render() {
               </div>
             </div>
           </div>
+<div className="col-12">
 <Editor	
 editorState={editorState}
 wrapperClassName="rich-editor demo-wrapper"	   
@@ -125,9 +126,7 @@ editorClassName="demo-editor"
 onEditorStateChange={this.onEditorStateChange}	  
 placeholder="Blog content goes here..."	       
 />
-
-<br></br>
-<br></br>
+</div>
 <br></br>
 <br></br>
 
