@@ -18,14 +18,13 @@ import Pagenation from "./components/Pagenation";
 
 class App extends Component {
   state = {
-    logged_in: localStorage.getItem("token") ? true : false,
     username: "",
     user_id: "",
+    logged_in: false,
     msg:""
   };
 
   componentDidMount() {
-    if (this.state.logged_in) {
       fetch('http://localhost:8000/api/current_user/', {
         headers: {
           Authorization: `JWT ${localStorage.getItem('token')}`
@@ -33,10 +32,12 @@ class App extends Component {
       })
         .then(res => res.json())
         .then(json => {
-          this.setState({ username: json.username,user_id:json.id });
+          this.setState({ username: json.username,user_id:json.id })
+          if(json.id)
+          this.setState({logged_in:true})
         });
     }
-  }
+  
 
   handle_login = (e, data) => {
     e.preventDefault();
