@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {BlogProvider} from './store/BlogContext'
+
 
 ReactDOM.render(
-  // <React.StrictMode>
-    <App />
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <BlogProvider>
+        <App />
+    </BlogProvider>
+  
+  </React.StrictMode>
   ,document.getElementById('root')
 );
 

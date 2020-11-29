@@ -1,10 +1,23 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { NavDropdown, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../App.css'
+import {BlogContext} from '../store/BlogContext'
 
-const Header = (props) => {
+
+
+
+const Header = () => {
+
+  const [appState, setAppState] = useContext(BlogContext)
+
+  const handle_logout = (e)=>{
+    localStorage.removeItem("blogtoken")
+    setAppState({logged_in:false, username:""})
+  }
+
+
   const logged_out_nav = (
     <Nav style={{ color: "#00ff00" }}>
       <Nav.Link>
@@ -18,9 +31,9 @@ const Header = (props) => {
 
   const logged_in_nav = (
     <Nav className="logout">
-      <h3> {props.logged_in ? `Hello, ${props.username}` : "Please Log In"}</h3>
+      <h3> {appState.logged_in ? `Hello, ${appState.username}` : "Please Log In"}</h3>
 
-      <Link onClick={props.handle_logout}>
+      <Link onClick={handle_logout}>
         <h5 style={{paddingLeft:20}}>Logout</h5>
       </Link>
     </Nav>
@@ -28,7 +41,7 @@ const Header = (props) => {
 
 
   const author_nav = ()=>{
-    if(props.logged_in)
+    if(appState.logged_in)
     return(
             <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
               <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
@@ -62,7 +75,7 @@ const Header = (props) => {
   {author_nav()}
           </Nav>
           <Nav>
-            <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>
+            <div>{appState.logged_in ? logged_in_nav : logged_out_nav}</div>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

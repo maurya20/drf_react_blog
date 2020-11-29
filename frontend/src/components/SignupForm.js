@@ -7,9 +7,20 @@ class SignupForm extends Component {
       username: '',
       email: '',
       password:'',
-      password2:''
+      password2:'',
     }
   }
+
+
+
+  // validateEmail(this.state.email){
+  //   var re = /\S+@\S+\.\S+/;
+  //     return re.test(email);
+  // }
+  
+  
+//console.log(validateEmail('anystring@anystring.anystring'))
+
   usernameChange = (event)=>{
     this.setState({
       username:event.target.value
@@ -38,6 +49,12 @@ class SignupForm extends Component {
       email:this.state.email,
       password:this.state.password,
       password2:this.state.password2}
+
+      if(!this.validateEmail)
+      {
+        alert("Invalid email")
+      }
+
     fetch('http://127.0.0.1:8000/api/user_signup/',{
         method: "POST",
         body: JSON.stringify(userdata),
