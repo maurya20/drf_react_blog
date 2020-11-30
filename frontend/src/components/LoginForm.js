@@ -15,37 +15,32 @@ const LoginForm = () => {
   const handle_login = (e)=>{
     const data = {username:user,password:password}
       e.preventDefault();
-    fetch("http://localhost:8000/api/token-auth/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok){setMsg({msg:"Invalid Credentials ❌ "})
-        setTimeout(()=>{
-          setMsg({msg:""})
-        },4000)
-      }
-        else return response.json();
-      })
-      .then((json) => {
-        localStorage.setItem("blogtoken", json.token);
-
-        setAppState({
-          logged_in: true,
-          username: json.user.username,
-          uid: json.user.id,
-        });
+    axios.post("http://localhost:8000/api/token-auth/",data, {
+      headers: {"Content-Type": "application/json"}
+    }).then((res) => {
+      if(res.status===200)
+      // console.log(res.data)
+      localStorage.setItem("blogtoken", res.data.token)
+      setAppState({
+        logAction: "got",
+        username: res.data.user.username,
+        uid: res.data.user.id,
       });
-
+    }).catch((err) => {
+      setMsg("Invalid Credentials ❌")
+       setTimeout(()=>{setMsg("")},4000)
+      })
   }
+
+
   return (
     <div className="container">
       <br/>
       <br/>
+      <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{msg}</h3>
+      <br></br>
       <h3>Login Here!!</h3>
+ 
       <form
         className="form-inline"
         onSubmit={(e) => handle_login(e)}
@@ -71,6 +66,9 @@ const LoginForm = () => {
       </form>
       <br/>
       <br/>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   )
 }
