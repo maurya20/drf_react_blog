@@ -15,6 +15,7 @@ const Header = () => {
   const handle_logout = (e)=>{
     localStorage.removeItem("blogtoken")
     setAppState({logged_in:false, username:""})
+    
   }
 
 
