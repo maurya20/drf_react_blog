@@ -19,36 +19,6 @@ import {BlogContext} from './store/BlogContext'
 const App = ()=>{
  const [appState, setAppState] = useContext(BlogContext)
 
-
-
-  // handle_login = (e, data) => {
-  //   e.preventDefault();
-  //   fetch("http://localhost:8000/api/token-auth/", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok){this.setState({msg:"Invalid Credentials ❌ "})
-  //       setTimeout(()=>{
-  //         this.setState({msg:""})
-  //       },4000)
-  //     }
-  //       else return response.json();
-  //     })
-  //     .then((json) => {
-  //       localStorage.setItem("token", json.token);
-
-  //       this.setState({
-  //         logged_in: true,
-  //         username: json.user.username,
-  //         user_id: json.user.id,
-  //       });
-  //     });
-  // };
-
  
     
     return (

@@ -23,8 +23,8 @@ const LoginForm = () => {
       localStorage.setItem("blogtoken", res.data.token)
       setAppState({
         logAction: "got",
-        username: res.data.user.username,
-        uid: res.data.user.id,
+        // username: res.data.user.username,
+        // uid: res.data.user.id,
       });
     }).catch((err) => {
       setMsg("Invalid Credentials ❌")

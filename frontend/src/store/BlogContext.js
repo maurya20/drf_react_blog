@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export const BlogContext = createContext()
 export const BlogProvider = (props)=>{
-    const [appState, setAppState] = useState({logAction:"", logged_in:false, username:"", uid:26})
+    const [appState, setAppState] = useState({logAction:"", logged_in:false, username:"", uid:0})
     
     useEffect(() => {
       if (localStorage.getItem('blogtoken'))
@@ -15,7 +15,7 @@ export const BlogProvider = (props)=>{
           Authorization: `JWT ${localStorage.getItem('blogtoken')}`
         }
       }).then(res => 
-        setAppState({username:res.data.username, logged_in:true})
+        setAppState({username:res.data.username,uid:res.data.id, logged_in:true})
         //console.log(res.data)
       
       ).catch(function(error) {
