@@ -1,54 +1,39 @@
-import React, { Component } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import { BlogContext } from "../store/BlogContext";
+import Axios from "axios";
 
-class Myblogs extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loaded: false,
-      placeholder: "Loading",
-    };
-  }
-  componentDidMount() {
-    if (this.props.logged_in !== true) {
-      alert("You are not Logged-In");
-      window.location.href = "http://localhost:3000/login";
-    } else {
-      let author_id = this.props.user_id;
-      fetch(`http://127.0.0.1:8000/api/myblogs/${author_id}`, {
+const Myblogs = () => {
+ 
+  const [appState, setAppState] = useContext(BlogContext)
+  const [data, setData] = useState([])
+  const [emsg, setEmsg] = useState("")
+  const [del, setDel] = useState("")
+
+  useEffect(() => {
+      let author_id = appState.uid;
+      Axios.get(`http://127.0.0.1:8000/api/myblogs/${author_id}`, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `JWT ${localStorage.getItem("token")}`,
+          Authorization: `JWT ${localStorage.getItem("blogtoken")}`,
         },
+      }).then(res=>{
+        setData(res.data)
+      }).catch(err=>{
+        setEmsg("Something went wrong!")
+        setTimeout(()=>{setEmsg("")},4000)
       })
-        .then((response) => {
-          if (response.status > 400) {
-            return this.setState(() => {
-              return { placeholder: "Something went wrong!" };
-            });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          this.setState(() => {
-            return {
-              data,
-              loaded: true,
-            };
-          });
-        });
-    }
-  }
+  }, [del,appState.uid])
 
-  render() {
+  
     return (
       <div className="container">
         <br />
         <h3>Blogs By Me</h3>
+        <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{emsg}</h3>
         <div className="row">
-          {this.state.data.map((blog) => {
+          {data.map((blog) => {
             return (
               <div className="col-md-4" key={blog.id}>
                 <div className="thumbnail">
@@ -77,7 +62,7 @@ class Myblogs extends Component {
                             }
                           )
                         
-                          this.componentDidMount() 
+                          setDel("deleted") 
                       }}
                       className="btn btn-danger"
                     >
@@ -92,5 +77,4 @@ class Myblogs extends Component {
       </div>
     );
   }
-}
 export default Myblogs;

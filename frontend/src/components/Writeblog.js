@@ -24,7 +24,7 @@ const Writeblog = ()=>{
   const [emsg, setEmsg] = useState("")
   
 
-  console.log(appState.uid)
+ 
 
   const onEditorStateChange = editorState => {
     setEditorState(editorState);	
