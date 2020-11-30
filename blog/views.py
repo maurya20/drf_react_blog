@@ -84,22 +84,18 @@ class SignupView(APIView):
 
     def post(self, request, format=None):
         data = self.request.data
-
         username = data["username"]
         email = data["email"]
         password = data["password"]
-        password2 = data["password2"]
-        if password == password2:
-            if User.objects.filter(email=email).exists():
-                return Response({"error":"Email Already Exists!"})
-            else:
-                user = User.objects.create_user(username=username,email=email,password=password)
-                user.save()
-                userprofile = Profile.objects.create(user=user,phone="default",hobbies="default",profession="default",quotes="default")
-                userprofile.save()
-                return Response({"success":"A new user created sucessfully"})
+        if User.objects.filter(email=email).exists():
+            return Response({"error":"Email Already Exists!"})
         else:
-            return Response({"error":"Password do not match"})
+            user = User.objects.create_user(username=username,email=email,password=password)
+            user.save()
+            userprofile = Profile.objects.create(user=user,phone="default",hobbies="default",profession="default",quotes="default")
+            userprofile.save()
+            return Response({"success":"A new user created sucessfully"})
+        
 
 
 
