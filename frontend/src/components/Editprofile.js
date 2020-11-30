@@ -1,62 +1,49 @@
-import React, { Component } from "react";
+import React, {useState, useContext} from "react";
 import axios from "axios";
+import {BlogContext} from '../store/BlogContext'
 
-class Editprofile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      image: null,
-      phone: "",
-      hobbies: "",
-      profession: "",
-      quotes: "",
-      uid: this.props.user_id,
-      preview:null
-    };
+const Editprofile = () => {
+  
+
+  const [appState, setAppState] = useContext(BlogContext)
+  const [imgState, setImgState] = useState({image:null, preview:null})
+  const [phone, setPhone] = useState("")
+  const [hobbies, setHobbies] = useState("")
+  const [profession, setProfession] = useState("")
+  const [quotes, setQuotes] = useState("")
+  const [emsg, setEmsg] = useState("")
+  const [smsg, setSmsg] = useState("")
+  
+    
+
+  const imageChange = (event) => {
+    setImgState({image:event.target.files[0], preview:URL.createObjectURL(event.target.files[0])})
   }
 
-  imageChange = (event) => {
-    this.setState({
-      image: event.target.files[0],
-      preview: URL.createObjectURL(event.target.files[0])
-    });
+ const phoneChange = (event) => {
+    setPhone(event.target.value);
+  };
+  const hobbiesChange = (event) => {
+    setHobbies(event.target.value);
+  };
+  const professionChange = (event) => {
+  setProfession(event.target.value)
+  };
+  const quotesChange = (event) => {
+  setQuotes(event.target.value)
   };
 
-  phoneChange = (event) => {
-    this.setState({
-      phone: event.target.value,
-    });
-  };
-  hobbiesChange = (event) => {
-    this.setState({
-      hobbies: event.target.value,
-    });
-  };
-  professionChange = (event) => {
-    this.setState({
-      profession: event.target.value,
-    });
-  };
-  quotesChange = (event) => {
-    this.setState({
-      quotes: event.target.value,
-    });
-  };
-
-  handleFormSubmit = (event) => {
-    if (this.props.logged_in !== true) {
-      alert("You are not Logged-In");
-    } else {
-      event.preventDefault();
+  const handleFormSubmit = (e) => {
+      e.preventDefault()
       let params = new URL(window.location.href).searchParams;
       let id = params.get("pid");
       let form_data = new FormData();
-      form_data.append("image", this.state.image, this.state.image.name);
-      form_data.append("phone", this.state.phone);
-      form_data.append("hobbies", this.state.hobbies);
-      form_data.append("profession", this.state.profession);
-      form_data.append("quotes", this.state.quotes);
-      form_data.append("user", this.state.uid);
+      form_data.append("image", imgState.image, imgState.image.name);
+      form_data.append("phone", phone);
+      form_data.append("hobbies", hobbies);
+      form_data.append("profession", profession);
+      form_data.append("quotes", quotes);
+      form_data.append("user", appState.uid);
       let url = `http://127.0.0.1:8000/api/updateprofile/${id}`;
       axios
         .put(url, form_data, {
@@ -65,32 +52,37 @@ class Editprofile extends Component {
           },
         })
         .then((res) => {
-          console.log(res.data);
-          alert("Profile Updated Successfully")
+          //console.log(res);
+          if(res.status==200)
+          setSmsg("Profile Updated Successfully")
+          setTimeout(()=>{setSmsg("")},4000)
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+        //console.log(err)
+        setEmsg("Something went wrong!")
+          setTimeout(()=>{setEmsg("")},4000)
+        });
     }
-  };
-  render() {
-    console.log(this.state.image);
-    console.log(this.state.uid);
+  
+
     return (
       <div className="container">
-        <br></br>
-
+        <h3 style={{backgroundColor:'green',color:'white',textAlign:'center'}}>{smsg}</h3>
+        <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{emsg}</h3>
+        <div className="row">
         <div className="col-6 bg-secondary">
           <h3>Edit Profile</h3>
-          <form onSubmit={this.handleFormSubmit}>
+         
             <label>Select image:</label>
-            <input type="file" accept="image/*" onChange={this.imageChange} /><img src={this.state.preview} alt="" width="150" height="150"/>
+            <input type="file" accept="image/*" onChange={imageChange} /><img src={imgState.preview} alt="" width="150" height="150"/>
             <div className="form-group">
               <label>Phone:</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Enter Phone Number"
-                onChange={this.phoneChange}
-                value={this.state.phone}
+                onChange={phoneChange}
+                value={phone}
               />
             </div>
 
@@ -100,18 +92,22 @@ class Editprofile extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter hobbies"
-                onChange={this.hobbiesChange}
-                value={this.state.hobbies}
+                onChange={hobbiesChange}
+                value={hobbies}
               />
             </div>
-            <div className="form-group">
+
+          <br></br>
+        </div>
+        <div className="col-6 bg-secondary">
+        <div className="form-group">
               <label>Profession:</label>
               <textarea
                 type="text"
                 className="form-control"
                 placeholder="Enter Profession"
-                onChange={this.professionChange}
-                value={this.state.profession}
+                onChange={professionChange}
+                value={profession}
               />
             </div>
             <div className="form-group">
@@ -120,22 +116,21 @@ class Editprofile extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter Quotes"
-                onChange={this.quotesChange}
-                value={this.state.quotes}
+                onChange={quotesChange}
+                value={quotes}
               />
             </div>
-
-            <button type="submit" className="btn btn-primary">
+            <form onSubmit={(e)=>handleFormSubmit(e)}>
+            <button type="submit" className="btn btn-primary float-right">
               Submit
             </button>
           </form>
-          <br></br>
         </div>
         <br></br>
-        
+        </div>
       </div>
     );
   }
-}
 
-export default Editprofile;
+
+export default Editprofile

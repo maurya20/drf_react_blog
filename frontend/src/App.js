@@ -44,8 +44,6 @@ const App = ()=>{
           <Route path="/editprofile" render={() => appState.logged_in ? (<Editprofile />) : (<Redirect to="/" />)}/>
           <Route path="/myprofile" render={() => appState.logged_in ? (<Myprofile />) : (<Redirect to="/" />)}/>
           <Route path="/myblogs" render={() => appState.logged_in ? (<Myblogs />) : (<Redirect to="/" />)}/>
-          {/* <Route path="/myprofile"><Myprofile /></Route> */}
-          {/* <Route path="/editprofile"><Editprofile /></Route> */}
           <Route path="/bycategory"><Category /></Route>
           <Route path="/bb"><Bb /></Route>
           

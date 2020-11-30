@@ -1,52 +1,40 @@
-import React, { Component } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {Link} from "react-router-dom"
+import { BlogContext } from "../store/BlogContext";
+import Axios from "axios";
 
-class Myprofile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
-  }
-  componentDidMount() {
-    // let params = new URL(window.location.href).searchParams;
-    let id = this.props.user_id;
-    fetch(`http://127.0.0.1:8000/api/myprof/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `JWT ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => {
-        if (response.status > 400) {
-          return this.setState(() => {
-            return { placeholder: "Something went wrong!" };
-          });
-        }
-        return response.json();
+
+
+
+const Myprofile = ()=> {
+  
+  const [appState, setAppState] = useContext(BlogContext)
+  const [data, setData] = useState([])
+  const [emsg, setEmsg] = useState("")
+
+    useEffect(() =>{
+      let id = appState.uid;
+      Axios.get(`http://127.0.0.1:8000/api/myprof/${id}`,{
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `JWT ${localStorage.getItem("blogtoken")}`,
+        },
+      }).then(res=>{
+        setData(res.data)
+      }).catch(err=>{
+        setEmsg("Something went wrong!")
+        setTimeout(()=>{setEmsg("")},4000)
       })
-      .then((data) => {
-        this.setState(() => {
-          return {
-            data,
-            loaded: true,
-            
-          };
-        });
-        
-        
-      });
-  }
+    },[])
 
-  render() {
-    
+
     
     return (
       <div className="container">
         <h3>Myprofile</h3>
         <br></br>
-
-        {this.state.data.map((profile) => {
+        <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{emsg}</h3>
+        {data.map((profile) => {
           return (
             <div className="row" key={profile.id}>
               <div className="col bg-white">
@@ -73,6 +61,6 @@ class Myprofile extends Component {
       </div>
     );
   }
-}
+
 
 export default Myprofile;
