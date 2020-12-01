@@ -1,7 +1,7 @@
 import React from 'react';
 
-class About extends React.Component {
-    render() {
+const About = ()=> {
+    
        
        return (
           <div className="container">
@@ -16,5 +16,5 @@ class About extends React.Component {
           </div>
        )
     }
- }
+ 
  export default About;

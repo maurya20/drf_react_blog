@@ -74,7 +74,7 @@ const Editprofile = () => {
           <h3>Edit Profile</h3>
          
             <label>Select image:</label>
-            <input type="file" accept="image/*" onChange={imageChange} /><img src={imgState.preview} alt="" width="150" height="150"/>
+            <input type="file" accept="image/*" onChange={imageChange} /><img src={imgState.preview} alt="" width="150" height="160"/>
             <div className="form-group">
               <label>Phone:</label>
               <input
