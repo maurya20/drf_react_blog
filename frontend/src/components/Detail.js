@@ -1,6 +1,5 @@
 import React, {useState, useEffect } from "react";
 import "../App.css";
-import Author from "./Author";
 import {Link} from 'react-router-dom'
 import Axios from "axios";
 
@@ -10,6 +9,8 @@ const Detail = () => {
   
  const [data, setData] = useState([])
  const [emsg, setEmsg] = useState("")
+ const [author, setAuthor] = useState([])
+ const [profile, setProfile] = useState([])
 
  useEffect(()=>{
   let params = new URL(window.location.href).searchParams;
@@ -27,6 +28,36 @@ const Detail = () => {
   })
  },[])
  
+ useEffect(()=>{
+  let params = new URL(window.location.href).searchParams
+  let user_id = params.get("user")
+  Axios.get(`http://127.0.0.1:8000/api/userdetail/${user_id}`,{
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(res=>{
+    setAuthor(res.data)
+  }).catch(err=>{
+    setEmsg("Something went wrong!")
+    setTimeout(()=>{setEmsg("")},4000)
+  })
+
+ },[])
+
+ useEffect(()=>{
+  let params = new URL(window.location.href).searchParams;
+  let id = params.get("user");
+  Axios.get(`http://127.0.0.1:8000/api/myprof/${id}`,{
+    headers: {
+      "Content-Type": "application/json",
+             },
+  }).then(res=>{
+    setProfile(res.data)
+  }).catch(err=>{
+    setEmsg("Something went wrong!")
+    setTimeout(()=>{setEmsg("")},4000)
+  })
+ },[])
   
     return (
       <div className="container">
@@ -43,7 +74,34 @@ const Detail = () => {
             <p>Published on: {data.created_on}</p>
           </div>
           <div className="col bg" style={{color:"white"}}>
-            <Author />
+            {/* for author details */}
+          {profile.map((profile) => {
+          return (
+            <div className="row" key={profile.id}>
+          <h4>
+                Author:
+                <Link
+                  to={`/bb/?id=${author.id}&au=${author.username}`}
+                >
+                  {" "}
+                  {author.username}
+                </Link>{" "}
+              </h4>
+              <img
+                src={profile.image}
+                alt="My profile Pic"
+                height="80px"
+                width="80px"
+                style={{ borderRadius: "50%" }}
+              ></img>
+              <p>Email: {author.email}</p>
+              <h5>
+                Favourite Quote<span> 👌 </span> {profile.quotes}
+              </h5>
+            </div>
+          );
+        })}
+            
           </div>
         </div>
         <div>
