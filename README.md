@@ -1,4 +1,5 @@
 # drf_react_blog
+# React Context Api for state management
 This is a  fully functional blog website, made using django and django Rest Framework for backend and React JS for frontend UI. In this website anonymous user can see blogs listed and its detail view, and registered user can write blog using UI  after login in the website. Logged user can upload profile pic and profile details and further profile can be updated by user. Also logged user can delete own blog.
 # How it looks-
 ![Alt text](https://maurya20.github.io/amb_website/images/blog.gif)
