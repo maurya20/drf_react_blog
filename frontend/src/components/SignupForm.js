@@ -43,12 +43,13 @@ const SignupForm = ()=>{
         if(res.data.error)
         setMsg(res.data.error)
        setTimeout(()=>{setMsg("")},4000)
-       if(res.data.success)
+       if(res.data.success){
        setSmsg(res.data.success)
        setTimeout(()=>{
          setSmsg("")
          setAppState({signup:true})
         },4000)
+      }
       }).catch((err) => {
         setMsg("User already exist!")
          setTimeout(()=>{setMsg("")},4000)
