@@ -37,36 +37,29 @@ const LoginForm = () => {
     <div className="container">
       <br/>
       <br/>
-      <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{msg}</h3>
-      <br></br>
-      <h3>Login Here!!</h3>
- 
-      <form
-        className="form-inline"
-        onSubmit={(e) => handle_login(e)}
-      >
-        <label className="mb-2 mr-sm-2">Username:</label>
-        <input
-          type="text"
-          className="form-control mb-2 mr-sm-2"
-          name="username"
-          onChange={(e)=>setUser(e.target.value)}
-        />
-        <label className="mb-2 mr-sm-2">Password:</label>
-        <input
-          className="form-control mb-2 mr-sm-2"
-          type="password"
-          name="password"
-          onChange={(e)=>setPassword(e.target.value)}
-        />
-
-        <button type="submit" className="btn btn-primary mb-2">
-          Submit
-        </button>
-      </form>
-      <br/>
-      <br/>
-      <br></br>
+      <div className="row">
+    <div className="col-sm-4 bg-white"></div>
+    <div className="col-sm-4 signupForm">
+    <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{msg}</h3>
+      <h3>Login Here</h3>
+    <form onSubmit={(e)=>handle_login(e)}>
+    <div className="form-group">
+      <label >Username:</label>
+      <input type="text" className="form-control" placeholder="Enter Username" onChange={(e)=>setUser(e.target.value)} />
+    </div>
+  
+    <div className="form-group">
+      <label >Password:</label>
+      <input type="password" className="form-control"  placeholder="Enter password" onChange={(e)=>setPassword(e.target.value)} />
+    </div>
+   
+    <button type="submit" className="btn btn-primary float-right">Submit</button>
+    <br></br>
+  </form>
+  <br/>
+    </div>
+    <div className="col-sm-4 bg-white"></div>
+  </div>
       <br></br>
       <br></br>
     </div>
