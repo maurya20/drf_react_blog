@@ -17,7 +17,7 @@ const Home = () => {
       axios.get("http://127.0.0.1:8000/api/bloglist", {
             headers: {
           'Content-Type': 'application/json',
-          Authorization: `JWT ${localStorage.getItem('token')}`
+          Authorization: `JWT ${localStorage.getItem('blogtoken')}`
                      }
       }).then(res=>{
         setData(res.data)

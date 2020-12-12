@@ -1,60 +1,50 @@
-import React, { Component } from 'react'
+import React, {useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
+import loading from '../components/images/loading.gif' 
+import axios from "axios"
 
-class Category extends Component {
-    constructor(props){
-        super(props)
-    this.state = {
-            data: [],
-            loaded: false,
-            placeholder: "Loading",
-          };
-        
-        }
-        componentDidMount() {
-            let params = new URL(window.location.href).searchParams;
-            let id = params.get("c");
-          fetch(`http://127.0.0.1:8000/api/blogsbycategory/${id}`, {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `JWT ${localStorage.getItem('token')}`
-            }
-          }
-          )
-            .then((response) => {
-              if (response.status > 400) {
-                return this.setState(() => {
-                  return { placeholder: "Something went wrong!" };
-                });
-              }
-              return response.json();
-            })
-            .then((data) => {
-              this.setState(() => {
-                return {
-                  data,
-                  loaded: true,
-                };
-              });
-            });
-        }
-        
+
+
+
+const Category = () => {
+
+  const [data, setData] = useState([])
+  const [spinner, setSpinner] = useState(true)
+  const [emsg, setEmsg] = useState("")
+  let params = new URL(window.location.href).searchParams;
+  let id = params.get("c");    
+
+  useEffect(() => {
+    
+    axios.get(`http://127.0.0.1:8000/api/blogsbycategory/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `JWT ${localStorage.getItem('blogtoken')}`
+               }
+    }).then(res=>{
+      setData(res.data)
+      setSpinner(false)
+    }).catch(err=>{
+      setEmsg("Something went wrong!")
+  setTimeout(()=>{setEmsg("")},4000)
+    })
+  },[])
+            
       
-      
-        render() {
-            let params = new URL(window.location.href).searchParams;
-            let id = params.get("c");
-          return (
+            
+return (
               <div className="container">
+                <h3 style={{backgroundColor:"red", color:"white", textAlign:"center"}}>{emsg}</h3>
+          {spinner?<img src={loading} width="300px" height="300px" alt="Loading"/>:null}
                 <br/>
           <h3>Blogs In {id} Category</h3>
             <div className="row">
-              {this.state.data.map((blog) => {
+              {data.map((blog) => {
                 return (
                   <div className="col-md-4" key={blog.id}>
                     <div className="thumbnail">
-                      <img src={blog.blog_pic} alt="Nature" style={{width:"100%"}}></img>
+                      <img src={blog.blog_pic} alt="Nature" style={{width:"100%", height:"350px", borderRadius: "5%"}}></img>
                       
                     </div>
                     <Card.Footer>
@@ -73,5 +63,5 @@ class Category extends Component {
             </div>
           );
         }
-      }
+      
 export default Category

@@ -54,7 +54,7 @@ class Bb extends Component {
                 return (
                   <div className="col-md-4" key={blog.id}>
                     <div className="thumbnail">
-                      <img src={blog.blog_pic} alt="Nature" style={{width:"100%"}}></img>
+                      <img src={blog.blog_pic} alt="Nature" style={{width:"100%", height:"350px", borderRadius: "5%"}}></img>
                       
                     </div>
                     <Card.Footer>
