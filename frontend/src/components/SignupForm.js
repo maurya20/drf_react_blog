@@ -62,7 +62,7 @@ const SignupForm = ()=>{
       <div>
       <div className="row">
     <div className="col bg-white"></div>
-    <div className="col-6 bg-secondary">
+    <div className="col-4 signupForm">
     <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{msg}</h3>
     <h3 style={{backgroundColor:'green',color:'white',textAlign:'center'}}>{smsg}</h3>
       <h3>Register Here</h3>
@@ -88,7 +88,8 @@ const SignupForm = ()=>{
         <input className="form-check-input" type="checkbox"/> Remember me
       </label>
     </div>
-    <button type="submit" className="btn btn-primary">Submit</button>
+    <button type="submit" className="btn btn-primary float-right">Submit</button>
+    <br></br>
   </form>
   <br/>
     </div>
