@@ -1,49 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
+import loading from '../components/images/loading.gif' 
+import axios from "axios"
 
 
 
 
-class Home extends React.Component {
-  constructor(props){
-    super(props)
-this.state = {
-        data: [],
-        loaded: false,
-        placeholder: "Loading",
-      };
-    
-    }
-    componentDidMount() {
-       
-      fetch("http://127.0.0.1:8000/api/bloglist", {
-        headers: {
+const Home = () => {
+
+  const [data, setData] = useState([])
+  const [spinner, setSpinner] = useState(true)
+  const [emsg, setEmsg] = useState("")   
+
+  useEffect(()=>{
+      axios.get("http://127.0.0.1:8000/api/bloglist", {
+            headers: {
           'Content-Type': 'application/json',
           Authorization: `JWT ${localStorage.getItem('token')}`
-        }
-      }
-      )
-        .then((response) => {
-          if (response.status > 400) {
-            return this.setState(() => {
-              return { placeholder: "Something went wrong!" };
-            });
-          }
-          return response.json();
-        })
-        .then((data) => {
-          this.setState(() => {
-            return {
-              data:data,
-              loaded: true,
-            };
-          });
-        });
-    }
+                     }
+      }).then(res=>{
+        setData(res.data)
+        setSpinner(false)
+      }).catch(err=>{
+        setEmsg("Something went wrong!")
+    setTimeout(()=>{setEmsg("")},4000)
+      })
+  },[])
+
   
-  
-    render() {
         
       return (
         <div className="container">
@@ -73,9 +58,13 @@ this.state = {
               <Link to={`/bycategory/?c=Other`}>Other</Link>
             </li>
           </ul>
+          <h3 style={{backgroundColor:"red", color:"white", textAlign:"center"}}>{emsg}</h3>
+          {spinner?<img src={loading} width="300px" height="300px" alt="Loading"/>:null}
+    
           <br />
           <div className="row">
-            {this.state.data.map((blog) => {
+            
+            {data.map((blog) => {
               return (
                 <div className="col-md-4" key={blog.id}>
                   <div className="thumbnail">
@@ -104,37 +93,9 @@ this.state = {
               );
             })}
           </div>
-          <nav aria-label="...">
-            <ul className="pagination">
-              <li className="page-item disabled">
-                <a className="page-link" href="#" tabindex="-1">
-                  Previous
-                </a>
-              </li>
-              <li className="page-item">
-                <Link to={"/"} className="page-link">
-                  1
-                </Link>
-              </li>
-              <li className="page-item active">
-                <a className="page-link" href="#">
-                  2 <span className="sr-only">(current)</span>
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
+         
         </div>
       );
     }
-  }
+  
  export default Home;
