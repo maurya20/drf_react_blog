@@ -31,11 +31,11 @@ const Header = () => {
   );
 
   const logged_in_nav = (
-    <Nav className="logout">
+    <Nav className="logout ">
       <h3> {appState.logged_in ? `Hello, ${appState.username}` : "Please Log In"}</h3>
 
-      <Link onClick={handle_logout}>
-        <h5 style={{paddingLeft:20}}>Logout</h5>
+      <Link onClick={handle_logout} >
+        <h5 style={{paddingLeft:20}} className="headerfont">Logout</h5>
       </Link>
     </Nav>
   );
@@ -59,7 +59,7 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav className="mr-auto headerfont">
             <Nav.Link>
               {" "}
               <Link to={"/"}>Home</Link>
@@ -68,14 +68,9 @@ const Header = () => {
               {" "}
               <Link to={"/about"}>About</Link>
             </Nav.Link>
-            {/* <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
-              <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/myblogs">My Blogs</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link to="/myprofile">My Profile</Link></NavDropdown.Item>
-            </NavDropdown> */}
   {author_nav()}
           </Nav>
-          <Nav>
+          <Nav className="headerfont">
             <div>{appState.logged_in ? logged_in_nav : logged_out_nav}</div>
           </Nav>
         </Navbar.Collapse>
