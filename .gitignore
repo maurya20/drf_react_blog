@@ -21,3 +21,4 @@ drf_react_blog/__pycache__/wsgi.cpython-38.pyc
 node_modules/
 media/
 frontend/build/
+db.sqlite3
