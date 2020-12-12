@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export const BlogContext = createContext()
 export const BlogProvider = (props)=>{
-    const [appState, setAppState] = useState({logAction:"", logged_in:false, username:"", uid:0})
+    const [appState, setAppState] = useState({logAction:"", logged_in:false, username:"", uid:0, signup:false})
     
     useEffect(() => {
       if (localStorage.getItem('blogtoken'))

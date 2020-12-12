@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import {BlogContext} from "../store/BlogContext"
 
 
 
 const SignupForm = ()=>{
  
+  const [appState, setAppState] = useContext(BlogContext)
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -43,7 +45,10 @@ const SignupForm = ()=>{
        setTimeout(()=>{setMsg("")},4000)
        if(res.data.success)
        setSmsg(res.data.success)
-       setTimeout(()=>{setSmsg("")},4000)
+       setTimeout(()=>{
+         setSmsg("")
+         setAppState({signup:true})
+        },4000)
       }).catch((err) => {
         setMsg("User already exist!")
          setTimeout(()=>{setMsg("")},4000)

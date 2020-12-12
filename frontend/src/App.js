@@ -30,12 +30,8 @@ const App = ()=>{
             <Home />
           </Route>
           <Route path="/about" component={About} />
-          <Route path="/signup">
-            <SignupForm />
-          </Route>
-          <Route path="/writeblog">
-            <Writeblog />
-          </Route>
+          <Route path="/signup" render={() => appState.signup ? (<Redirect to="/login" />) : (<SignupForm />)}/> 
+         
           <Route path="/login" render={() => appState.logged_in ? (<Redirect to="/" />) : (<LoginForm />)}/>
 
           <Switch>
@@ -44,6 +40,7 @@ const App = ()=>{
           <Route path="/editprofile" render={() => appState.logged_in ? (<Editprofile />) : (<Redirect to="/" />)}/>
           <Route path="/myprofile" render={() => appState.logged_in ? (<Myprofile />) : (<Redirect to="/" />)}/>
           <Route path="/myblogs" render={() => appState.logged_in ? (<Myblogs />) : (<Redirect to="/" />)}/>
+          <Route path="/writeblog" render={() => appState.logged_in ? (<Writeblog />) : (<Redirect to="/" />)}/>
           <Route path="/bycategory"><Category /></Route>
           <Route path="/bb"><Bb /></Route>
           
