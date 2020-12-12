@@ -59,10 +59,10 @@ const SignupForm = ()=>{
   
     
     return (
-      <div>
+      <div className="container">
       <div className="row">
-    <div className="col bg-white"></div>
-    <div className="col-4 signupForm">
+    <div className="col-sm-4 bg-white"></div>
+    <div className="col-sm-4 signupForm">
     <h3 style={{backgroundColor:'red',color:'white',textAlign:'center'}}>{msg}</h3>
     <h3 style={{backgroundColor:'green',color:'white',textAlign:'center'}}>{smsg}</h3>
       <h3>Register Here</h3>
@@ -93,7 +93,7 @@ const SignupForm = ()=>{
   </form>
   <br/>
     </div>
-    <div className="col bg-white"></div>
+    <div className="col-sm-4 bg-white"></div>
   </div>
   <br/>
       </div>
