@@ -40,7 +40,7 @@ const Myblogs = () => {
                   <img
                     src={blog.blog_pic}
                     alt="Nature"
-                    style={{ width: "100%" }}
+                    style={{width:"100%", height:"350px", borderRadius: "5%"}}
                   ></img>
                 </div>
                 <Card.Footer>

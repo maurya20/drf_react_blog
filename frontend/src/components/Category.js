@@ -35,10 +35,11 @@ const Category = () => {
             
 return (
               <div className="container">
-                <h3 style={{backgroundColor:"red", color:"white", textAlign:"center"}}>{emsg}</h3>
-          {spinner?<img src={loading} width="300px" height="300px" alt="Loading"/>:null}
-                <br/>
           <h3>Blogs In {id} Category</h3>
+          <h3 style={{backgroundColor:"red", color:"white", textAlign:"center"}}>{emsg}</h3>
+          {spinner?<img src={loading} width="180px" height="180px" alt="Loading" className="spinner"/>:null}
+            <br>
+            </br>
             <div className="row">
               {data.map((blog) => {
                 return (
@@ -60,6 +61,8 @@ return (
                 );
               })}
             </div>
+            <br></br>
+            <br></br>
             </div>
           );
         }

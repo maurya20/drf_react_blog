@@ -4,6 +4,7 @@ import { NavDropdown, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../App.css'
 import {BlogContext} from '../store/BlogContext'
+import logo from '../components/images/logo.png'
 
 
 
@@ -44,7 +45,7 @@ const Header = () => {
   const author_nav = ()=>{
     if(appState.logged_in)
     return(
-            <NavDropdown title="Blogger Section" id="collasible-nav-dropdown">
+            <NavDropdown title="Blogger Section" id="collasible-nav-dropdown" className="author_nav">
               <NavDropdown.Item><Link to="/writeblog">Write Blog</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to="/myblogs">My Blogs</Link></NavDropdown.Item>
               <NavDropdown.Item ><Link to="/myprofile">My Profile</Link></NavDropdown.Item>
@@ -54,8 +55,9 @@ const Header = () => {
   return (
     <div>
       <Navbar className="navbar" collapseOnSelect expand="lg" variant="dark">
-        <Navbar.Brand href="#home">
-          <h1>Blog Website</h1>
+        <Navbar.Brand href="#home" className="logo">
+          {/* <img src={logo} width="20%" alt="logo" /> */}
+          <h1>BlogSite</h1>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

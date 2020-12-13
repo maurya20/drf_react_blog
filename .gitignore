@@ -22,3 +22,4 @@ node_modules/
 media/
 frontend/build/
 db.sqlite3
+frontend/src/components/images/logo.gif

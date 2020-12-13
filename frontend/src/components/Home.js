@@ -59,7 +59,7 @@ const Home = () => {
             </li>
           </ul>
           <h3 style={{backgroundColor:"red", color:"white", textAlign:"center"}}>{emsg}</h3>
-          {spinner?<img src={loading} width="300px" height="300px" alt="Loading"/>:null}
+          {spinner?<img src={loading} width="200px" height="200px" alt="Loading" className="spinner"/>:null}
     
           <br />
           <div className="row">

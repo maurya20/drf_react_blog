@@ -4,13 +4,22 @@
  }
 
 .navbar{
-   background-color: rgb(29, 97, 71);
+   background-color: rgb(173, 221, 165);
 }
 
 
+.logo{
+   font-weight: bold;
+   font-size: xx-large;
+   font-family: 'Lucida Grande', 'Lucida Sans';
+}
+.author_nav{
+   color: blue;
+}
+
 /* For Logout button */
 .logout{
-color: rgb(187, 255, 0);
+color: white;
 }
 
 /* for  Blog Detail page */
@@ -74,4 +83,11 @@ color: rgb(187, 255, 0);
 .headerfont{
    font-weight: bold;
    font-size: x-large;
+}
+
+/* for loading spinner */
+.spinner {
+   display: block;
+   margin-left: auto;
+   margin-right: auto 
 }
